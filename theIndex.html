@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="keywords" content="刀剑神域, 记忆重组, SAOMDWIKI, SAOMD人物图鉴, SAOMD, 记忆碎片人物图鉴, 记忆重组人物图鉴">
+  <title>SAOMD-人物图鉴</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/index_760.css">
+  <script src="./js/MPB.js"></script>
+  <script src="./JSON/BasicConfig.js"></script>
+</head>
+
+<body ontouchstart>
+  <!-- MASK SVG 四圆点加载 -->
+  <div class="masks" id="masks">
+    <div class="mask-svg">
+      <div class="mask-text">
+        Now Loading···
+      </div>
+      <svg class="lds-message" width="80px" height="80px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid">
+        <g transform="translate(20 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.99275 0.99275)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(40 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.773605 0.773605)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.25s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(60 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.42525 0.42525)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.125s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(80 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.113418 0.113418)">
+            <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="mainPage">
+    <!-- 头部 -->
+    <header>
+      <a>SAOMD-PB</a>
+      <div class="player_icon">
+      </div>
+    </header>
+    <!-- 顶部留白 -->
+    <div class="placeholder-top"></div>
+    <!-- 主体内容 -->
+    <div class="centerBox">
+      <!-- 新角色展示部分 -->
+      <section class="section-seperate">
+        <div class="section-title">
+          <span>近期新角色</span>
+        </div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="" alt="图片未加载完成">
+            </div>
+            <div class="swiper-slide">
+              <img src="" alt="图片未加载完成">
+            </div>
+            <div class="swiper-slide">
+              <img src="" alt="图片未加载完成">
+            </div>
+            <div class="swiper-slide">
+              <img src="" alt="图片未加载完成">
+            </div>
+            <div class="swiper-slide">
+              <img src="" alt="图片未加载完成">
+            </div>
+            <div class="swiper-slide">
+              <img src="" alt="图片未加载完成">
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+
+      <!-- 人物搜索部分 -->
+      <section class="section-seperate">
+        <div class="section-select">
+          <div class="section-title">
+            <span>人物精确搜索</span>
+          </div>
+          <div class="select">
+            <ul class="select-list M_up">
+              <li class="select-list__item">
+                <span class="item-title" val="">选择属性</span>
+                <ul class="item-lists element">
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="1" style="color: #4f4f4f;">&#x1000;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="4" style='color:red;'>&#x1003;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="2" style='color:rgb(0, 255, 76);'>&#x1001;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="3" style='color:rgb(0, 162, 255);'>&#x1002;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="5" style='color:rgb(255, 174, 0);'>&#x1004;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="6" style='color:rgb(238, 255, 0);'>&#x1005;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="7" style='color:rgb(132, 0, 255);'>&#x1006;</span>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="select-list__item">
+                <span class="item-title" val="">选择武器</span>
+                <ul class="item-lists weapon">
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="1">&#x1007;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="9">&#x1015;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="2">&#x1008;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="3">&#x1009;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="4">&#x1010;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="5">&#x1011;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="6">&#x1012;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="7">&#x1013;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="8">&#x1014;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="10">&#x1016;</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="11">&#x1017;</span>
+                  </li>
+                </ul>
+              </li>
+              <li class="select-list__item">
+                <span class="item-title" val="">选择性别</span>
+                <ul class="item-lists sex">
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="1">男性</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="2">女性</span>
+                  </li>
+                </ul>
+              </li>
+              <li class="select-list__item">
+                <span class="item-title" val="">选择星级</span>
+                <ul class="item-lists rare">
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="1">四星</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="2">五星</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="3">六星</span>
+                  </li>
+                </ul>
+              </li>
+              <li class="select-list__item">
+                <span class="item-title" val="">选择角色</span>
+                <ul class="item-lists-roles">
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="kirito">桐人</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="asuna">亚斯娜</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="leafa">莉法</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="silica">西莉卡</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="lisbeth">莉兹贝特</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="sinon">诗乃</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="yuuki">有纪</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="klein">克莱因</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="agil">艾基尔</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="strea">斯朵蕾雅</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="philia">菲莉亚</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="rain">伶茵</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="seven">赛玟</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="sachi">幸</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="argo">亚鲁戈</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="heathcliff" style="font-size:15px!important;">希兹克利夫</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="yui">结衣</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="premiere">普蕾蜜亚</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="yuna">YUNA</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="eugeo">尤吉欧</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="alice">爱丽丝</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="LLENN">莲</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="pitohui">林鵙鹟</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="buke">不可次郎</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="eiji">瑛二</span>
+                  </li>
+                  <li class="item-list__detail">
+                    <span class="item-list__span" val="other">其他</span>
+                  </li>
+                </ul>
+              </li>
+              <li class="select-list__item">
+                <span class="item-title" id="clearSelect">清空选项</span>
+              </li>
+              <li class="select-list__item">
+                <span class="item-title" id="startFind">开始检索</span>
+              </li>
+            </ul>
+            <div class="select-open" id="RoleOpen">
+              <div class="select-open-lines">
+                <span class="line-item" style="top:11px"></span>
+                <span class="line-item" style="top:19px"></span>
+                <span class="line-item" style="top:27px"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 搜索结果显示部分 -->
+        <div class="rolecard">
+          <ul class="rolecard-list">
+          </ul>
+
+          <!-- 下面的li是一个模板。不能删除！ -->
+          <li class="rolecard-list__item" id="rolecard" style="display: none">
+            <div class="item-cutin">
+            </div>
+            <div class="item-details">
+              <div class="item-detail__rarity">
+              </div>
+              <span class="item-detail__title"></span>
+              <span class="item-detail__name"></span>
+            </div>
+            <div class="item-cell">
+              <div class="item-ele"></div>
+              <div class="item-wea"></div>
+              <div class="item-num hpA"></div>
+              <div class="item-num mpA"></div>
+              <div class="item-num atkA"></div>
+              <div class="item-num defA"></div>
+              <div class="item-num criA"></div>
+            </div>
+          </li>
+        </div>
+        <div class="loadmore">点击加载更多</div>
+      </section>
+      <div class="placeholder-top"></div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <div class="goTop">
+      <svg width="50" height="50" class="goTopSvg" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 35 L25 18 L45 35 "></path>
+      </svg>
+    </div>
+    <!-- 底部 -->
+    <footer>
+      <div class="centerBox">
+        <span>
+          <!-- <a style='text-decoration: none;color:#4f4f4f' href='http://www.miitbeian.gov.cn'>
+            赣ICP备18011747号
+          </a> -->
+          Copyright © 丨ConGreat
+        </span>
+      </div>
+    </footer>
+  </div>
+  <!-- 左侧公告 -->
+  <div class="select-open boxShadow-no" id="NoticeOpen">
+    <div class="select-open-lines">
+      <span class="line-item" style="top:11px"></span>
+      <span class="line-item" style="top:19px"></span>
+      <span class="line-item" style="top:27px"></span>
+    </div>
+  </div>
+  <section class="section-left Phone-Notice">
+    <div class="Notice">
+      <span class="Notice-title">
+        公告
+      </span>
+      <div class="Notice-text">
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+  <script src="./js/index.js"></script>
+  <script>
+    $(document).ready(function () {
+      console.log('页面加载完毕，开始初始化数据');
+      IndexInit();
+    });
+  </script>
+</body>
+
+
+</html>
