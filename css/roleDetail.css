@@ -1,0 +1,273 @@
+.role-area {
+  width: 800px;
+  float: left;
+}
+.card-reply{
+  width: 260px;
+  float: right;
+}
+.role-area-left, .role-area-right {
+  width: 390px;
+}
+
+.role-area-left {
+  float: left;
+}
+
+.role-area-right {
+  float: right;
+}
+
+.section-card {
+  position: relative;
+  border-radius: 2px;
+  border: solid 10px rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  z-index: 80;
+}
+.section-card:hover{
+  -webkit-box-shadow: 0px 0px 18px 1px rgb(143, 143, 143);
+  -moz-box-shadow: 0px 0px 18px 1px rgb(143, 143, 143);
+  box-shadow: 0px 0px 18px 1px rgb(143, 143, 143);
+}
+
+.swordskill-list__item,
+.battleskill-list__item,
+.slotskill ul,
+.role-design__links,
+.detail-title, .detail-name,
+.slotskill-detail,
+.slotskill-detail p,
+.cards-detail__span,
+.cards-img{
+  display: block;
+  margin-top: 10px;
+}
+/* 角色信息-头像样式 */
+
+.role-info {
+  display: flex;
+  line-height: 1;
+}
+
+.role-info__cutin {
+  width: 90px;
+}
+
+.cutin-img img {
+  width: 100%;
+}
+
+.cutin-img {
+  position: relative;
+}
+
+.ele, .wea {
+  position: absolute;
+  bottom: 0px;
+  right: -10px;
+}
+
+.ele img {
+  width: 45px;
+}
+
+.wea img {
+  width: 37px;
+  padding: 4px;
+}
+
+/* 角色信息文本样式 */
+
+.role-info__detail {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.detail-rarity img {
+  width: 25px;
+}
+
+.detail-title {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.detail-name {
+  font-size: 1.3em;
+}
+
+.detail-tips,
+.role-panel__line {
+  margin-top: 5px;
+}
+
+/* 角色面板样式 */
+
+.role-panel__line {
+  font-size: 1.6em;
+  padding: 1px 5px;
+  border-radius: 2px;
+  position: relative;
+  letter-spacing: 1px;
+  background-color: #acacac;
+  text-shadow: 1px 1px 0px #000000;
+}
+.role-panel__line:hover{
+  animation: widthbounce 0.3s linear;
+  transform-origin: left;
+}
+@keyframes widthbounce{
+  0%{
+    transform: scale(0.9,1);
+  }
+  60%{
+    transform: scale(1.1,1);
+  }
+  80%{
+    transform: scale(1.05,1);
+  }
+  100%{
+    transform: scale(1,1);
+  }
+}
+.role-panel__line span {
+  position: absolute;
+  right: 5px;
+  text-align: right;
+}
+
+/* 立绘&切换样式 */
+.role-design__imgs{
+  overflow: hidden;
+  height: 658.10666px;
+  padding-bottom: 1.6em;
+}
+.item-img{
+  position: relative;
+}
+.item-img img {
+  width: 100%;
+}
+
+.item-img input {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  clip: rect(0 0 0 0);
+}
+.role-design__links{
+  display: flex;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.item-link{
+  text-align: center;
+  font-size: 1.4em;
+  line-height: 1.6em;
+  flex:1;
+  background-color: #666666;
+}
+.item-link:hover{
+  background-color: #ffc343;
+  color:#fff;
+}
+
+/* 技能特性样式 */
+.ss3-sp{
+  display: flex;
+}
+.card-title{
+  font-size: 1.7em;
+  font-weight: bold;
+  flex: 1;
+  letter-spacing: 1px;
+}
+.sp-item{
+  max-width: 50px;
+  flex: 1;
+}
+.sp-item img{
+  width: 100%;
+}
+/* 技能槽位样式 */
+.placeholder-top{
+  text-align: center;
+  line-height: 80px;
+}
+
+.slotskill ul{
+  display: flex;
+}
+.slotskill ul li{
+  flex: 1;
+  max-width: 60px;
+}
+.slotskill ul li img{
+  width: 100%;
+}
+.slotskill-detail{
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  background-color: #fff;
+}
+.slotskill-detail span{
+  font-size: 1.4em;
+}
+.slotskill-detail p{
+  font-size: 1.2em;
+}
+.slotskill ul li:hover img{
+  animation: heightbounce 0.3s linear;
+  transform-origin: bottom;
+}
+.slotskill ul li:hover .slotskill-detail{
+  display: block;
+}
+@keyframes heightbounce{
+  0%{
+    transform: scale(1,0.8);
+  }
+  60%{
+    transform: scale(1,1.2);
+  }
+  80%{
+    transform: scale(1,1.1);
+  }
+  100%{
+    transform: scale(1,1);
+  }
+}
+/* 剑技样式 */
+.skill-title,
+.cards-detail__span{
+  font-size: 1.5em;
+  text-decoration: underline;
+}
+.swordskill-list__item p,
+.battleskill-list__item p,
+.placeholder-top span,
+.cards-detail__p{
+  font-size: 1.2em;
+  color: #666666;
+}
+/* 卡池样式 */
+.cards-img img{
+  width: 100%;
+}
+.cards-cutin{
+  font-size: 0;
+}
+.cards-cutin img{
+  width: 80px;
+}
