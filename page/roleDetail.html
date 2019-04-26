@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="keywords" content="刀剑神域, 记忆重组, SAOMDWIKI, SAOMD人物图鉴, SAOMD, 记忆碎片人物图鉴, 记忆重组人物图鉴">
+  <title>SAOMD-人物图鉴</title>
+  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/index_760.css">
+  <link rel="stylesheet" href="../css/roleDetail.css">
+  <script src="../js/MPB.js"></script>
+  <script src="../JSON/BasicConfig.js"></script>
+</head>
+
+<body ontouchstart>
+  <!-- MASK SVG 四圆点加载 -->
+  <div class="masks" id="masks">
+    <div class="mask-svg">
+      <div class="mask-text">
+        Now Loading···
+      </div>
+      <svg class="lds-message" width="80px" height="80px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid">
+        <g transform="translate(20 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.99275 0.99275)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(40 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.773605 0.773605)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.25s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(60 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.42525 0.42525)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.125s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(80 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.113418 0.113418)">
+            <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+      </svg>
+    </div>
+  </div>>
+  <div class="mainPage">
+    <!-- 头部 -->
+    <header>
+      <a>SAOMD-PB</a>
+      <div class="player_icon">
+      </div>
+    </header>
+    <!-- 顶部留白 -->
+    <div class="placeholder-top"></div>
+    <div class="placeholder-top"></div>
+    <!-- 主体 -->
+    <div class="centerBox">
+      <div class="role-area">
+        <div class="role-area-left">
+          <!-- 角色信息以及面板 -->
+          <section class="section-card">
+            <div class="role-info">
+              <div class="role-info__cutin">
+                <div class="cutin-img">
+                  <img src="../images/cutin/LLENN_225015.gif" alt="">
+                  <div class="ele">
+                    <img src="../images/icon/Element/icon_attribute_unattributed.png" alt="">
+                  </div>
+                  <div class="wea">
+                    <img src="../images/icon/weapon/icon_job_8.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="role-info__detail">
+                <div class="detail-rarity">
+                  <img src="../images/icon/icon_rarity_1.png" alt="">
+                  <img src="../images/icon/icon_rarity_1.png" alt="">
+                  <img src="../images/icon/icon_rarity_1.png" alt="">
+                  <img src="../images/icon/icon_rarity_1.png" alt="">
+                  <img src="../images/icon/icon_rarity_1.png" alt="">
+                </div>
+                <span class="detail-title">战场中的小粉红</span>
+                <span class="detail-name">莲</span>
+                <p class="detail-tips">Tips：<span>100级，四破ATK&CRI</span></p>
+              </div>
+            </div>
+            <div class="role-panel">
+              <div class="role-panel__line hpA" style="width: 62.9%;">
+                HP<span>13209</span>
+              </div>
+              <div class="role-panel__line mpA" style="width: 61.75%;">
+                MP<span>247</span>
+              </div>
+              <div class="role-panel__line atkA" style="width: 81.6%;">
+                ATK<span>4488</span>
+              </div>
+              <div class="role-panel__line defA" style="width: 58.4%;">
+                DEF<span>2336</span>
+              </div>
+              <div class="role-panel__line criA" style="width: 71.62%;">
+                CRI<span>3581</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- 角色立绘 -->
+          <section class="section-card">
+            <div class="role-design">
+              <div class="role-design__imgs">
+                <div class="item-img">
+                  <input id="item-img1">
+                  <img src="../images/LLENN_225015.jpg" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img2">
+                  <img src="../images/LLENN_225015.jpg" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img3">
+                  <img src="../images/LLENN_225015.jpg" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img4">
+                  <img src="../images/LLENN_225015.jpg" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img5">
+                  <img src="../images/LLENN_225015.jpg" alt="">
+                </div>
+              </div>
+              <div class="role-design__links">
+                <label class="item-link" for="item-img1">1</label>
+                <label class="item-link" for="item-img2">2</label>
+                <label class="item-link" for="item-img3">3</label>
+                <label class="item-link" for="item-img4">4</label>
+                <label class="item-link" for="item-img5">5</label>
+              </div>
+            </div>
+          </section>
+
+          <div class="placeholder-top"></div>
+        </div>
+        <div class="role-area-right">
+          <!-- 人物特性 -->
+          <section class="section-card">
+            <div class="ss3-sp">
+              <span class="card-title">人物特性</span>
+              <div class="sp-item">
+                <img src="../images/icon_status_attack_up.png" alt="攻击力提升">
+              </div>
+            </div>
+          </section>
+
+          <!-- 技能槽位 -->
+          <section class="section-card">
+            <div class="slotskill">
+              <span class="card-title">技能槽位</span>
+              <ul>
+                <li>
+                  <img src="../images/slot_skill_icon_job_8.png" alt="">
+                  <div class="slotskill-detail">
+                    <span>自动步枪技能(LV1)</span>
+                    <p>战斗中攻击力及会心上升250</p>
+                  </div>
+                </li>
+                <li>
+                  <img src="../images/slot_skill_icon_combo_time.png" alt="">
+                  <div class="slotskill-detail">
+                    <span>自动步枪技能(LV2)</span>
+                    <p>战斗中攻击力及会心上升250</p>
+                  </div>
+                </li>
+                <li>
+                  <img src="../images/slot_skill_icon_combo_damage.png" alt="">
+                  <div class="slotskill-detail">
+                    <span>自动步枪技能(LV3)</span>
+                    <p>战斗中攻击力及会心上升250</p>
+                  </div>
+                </li>
+                <li>
+                  <img src="../images/slot_skill_icon_0.png" alt="">
+                  <div class="slotskill-detail">
+                    <span>自动步枪技能(LV4)</span>
+                    <p>战斗中攻击力及会心上升250</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="placeholder-top">
+              <span>鼠标移至图标即可查看技能槽位</span>
+            </div>
+          </section>
+          <!-- 剑技 -->
+          <section class="section-card">
+            <div class="swordskill-list">
+              <span class="card-title">剑技</span>
+              <div class="swordskill-list__item">
+                <span class="skill-title">音速直冲(MP:50)</span>
+                <p>起跳，在空中翻转并连续射击的枪技。</p>
+              </div>
+              <div class="swordskill-list__item">
+                <span class="skill-title">电浆手榴弹(MP:60)</span>
+                <p>向后跳跃，并投掷电浆手榴弹的投掷技能。</p>
+              </div>
+              <div class="swordskill-list__item">
+                <span class="skill-title">突击勇气(MP:120)</span>
+                <p>边跑边射击，滑行至敌人背后追击之连结技能。提升队伍全员的攻击力，并提升自身移动速度。连携对象：无属性，损伤增加10%。</p>
+              </div>
+            </div>
+          </section>
+          <!-- 战斗技能 -->
+          <section class="section-card">
+            <div class="battleskill-list">
+              <span class="card-title">战斗技能</span>
+              <div class="battleskill-list__item">
+                <span class="skill-title">对无属性伤害增加</span>
+                <p>对无属性的敌人伤害增加</p>
+              </div>
+              <div class="battleskill-list__item">
+                <span class="skill-title">ATK&MP+15%</span>
+                <p>攻击力&MP最大值增加15%</p>
+              </div>
+              <div class="battleskill-list__item">
+                <span class="skill-title">LS：队伍的无属性攻击加10%</span>
+                <p>起跳，在空中翻转并连续射击的枪技。</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="card-reply">
+        <section class="section-card">
+          <div class="allrolecards">
+            <span class="card-title">所属卡池</span>
+            <div class="cards-img">
+              <img src="../images/20811_scout_top_s.jpg" alt="">
+            </div>
+            <div class="cards-detail">
+              <span class="cards-detail__span">子弹大混战</span>
+              <p class="cards-detail__p">外传二期</p>
+            </div>
+            <div class="cards-cutin">
+              <img src="../images/cutin/LLENN_225015.gif" alt="">
+              <img src="../images/cutin/Pitohui_225016.gif" alt="">
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+      <div class="centerBox">
+        <span>
+          Copyright © 丨ConGreat
+        </span>
+      </div>
+    </footer>
+  </div>
+  <!-- 左侧公告 -->
+  <div class="select-open boxShadow-no" id="NoticeOpen">
+    <div class="select-open-lines">
+      <span class="line-item" style="top:11px"></span>
+      <span class="line-item" style="top:19px"></span>
+      <span class="line-item" style="top:27px"></span>
+    </div>
+  </div>
+  <section class="section-left Phone-Notice">
+    <div class="Notice">
+      <span class="Notice-title">
+        公告
+      </span>
+      <div class="Notice-text">
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+<script src="../js/index.js"></script>
+<script>
+  $(document).ready(() => {
+    Mask.loadoverMask("#ffc343");
+  })
+</script>
+
+</html>
