@@ -1,0 +1,149 @@
+@media screen and (max-width: 770px) {
+  .centerBox {
+    width: 100%;
+  }
+  .mainPage{
+    position: relative;
+    left: 0px;
+    transition: all 0.2s linear;
+  }
+  /*头部样式*/
+  header a {
+    float: none;
+    color: #000;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0 auto;
+  }
+  header span {
+    display: none;
+  }
+  header .player_icon{
+    display: none;
+  }
+  /*section样式修改*/
+  .section-title {
+    width: 80%;
+  }
+  /*公告样式修改*/
+  .Phone-Notice{
+    width: 200px;
+    height: 100%;
+    top: 0;
+    left: -230px;
+  }
+  .Phone-Notice:hover {
+    width: 200px;
+    animation:none;
+  }
+  .Notice-title{
+    display: none;
+  }
+  #NoticeOpen{
+    max-width: 40px;
+    position: fixed;
+    top: 6px;
+    z-index: 100;
+  }
+  .Notice .Notice-text{
+    margin-top: 52px;
+    padding: 10px;
+  }
+  /*角色选择样式*/
+  .select {
+    padding: 8px 0;
+    position: relative;
+  }
+  .select-list, .select-open, .select-list__item {
+    display: block;
+  }
+  .select-open {
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+  }
+  .select-open-lines{
+    width: 22px;
+    height: 20px;
+    margin: 0px auto;
+    position: relative;
+    padding: 10px 0;
+  }
+  .select-open-lines .line-item{
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: calc(100% - 2px);
+    background-color: #000000;
+    transition: all 0.4s linear;
+    transform-origin: left;
+  }
+  .close .line-item:nth-child(1){
+    width: 23px;
+    transform: rotate(45deg);
+  }
+  .close .line-item:nth-child(2){
+    width: 0;
+  }
+  .close .line-item:nth-child(3){
+    width: 23px;
+    transform: rotate(-45deg);
+  }
+  .select-list {
+    position: absolute;
+    overflow: hidden;
+    height: 0;
+    box-shadow: none;
+    transition: height 0.6s ease-out;
+  }
+  .M_up{
+    bottom: 45px;
+    box-shadow: 0px -8px 8px -8px #dddddd
+  }
+  .M_down{
+    top: 40px;
+    box-shadow: 0px 8px 8px -8px #dddddd
+  }
+  .select-list__item {
+    position: relative;
+  }
+  .select-list__item .item-title, .item-list__detail .item-list__span {
+    line-height: 36px;
+    padding: 2px;
+  }
+  
+  .item-lists {
+    top: 0px;
+    box-shadow: none;
+  }
+  .item-lists::before, .item-lists-roles::before {
+    height: 0px;
+  }
+  .item-list__span:hover {
+    background-color: #ffc34f;
+    color: #fff;
+  }
+  .item-list__detail .item-list__span:after {
+    height: 0px;
+  }
+  .item-lists-roles {
+    top: -400%;
+    z-index: 20;
+  }
+  .item-lists-roles .item-list__detail {
+    flex: 0 0 calc(100%/4);
+  }
+  .select-list__item:hover .item-lists-roles {
+    height: 700%;
+  }
+  .item-details{
+    width: 50%;
+    margin-left: 10px;
+  }
+  .rolecard-list__item {
+    padding: 5px;
+    margin:10px 5px 0px 5px;
+  }
+  .rolecard-list__item .item-cell .item-num{
+    display: none;
+  }
+}
