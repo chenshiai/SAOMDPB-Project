@@ -91,10 +91,11 @@ function IndexInit() {
   })
 
   // 回调函数
+  // 接收response = response.datas
   function roleCardDate(response) {
     var loadmore = document.getElementsByClassName("loadmore");
     document.querySelector('.rolecard-list').innerHTML = '';
-    var lazyload = new MPB.Taglazyload(response, inputRoleCard);
+    var lazyload = new MPB.Taglazyload(response.data, inputRoleCard);
     loadmore[0].style.display = "block";
     loadmore[0].onclick = null;
     loadmore[0].innerHTML = "点击加载更多";

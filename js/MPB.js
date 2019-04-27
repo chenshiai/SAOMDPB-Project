@@ -114,8 +114,21 @@ const MPB = {
         clearTimeout(timer);// 规定时间内完成响应，关闭计时器
         var responseText = xhr.responseText;//返回结果
         var res = JSON.parse(responseText);//回调函数
-        if (res[0].id > 0) {
-          ajax.success(res);
+        /**
+         * 返回结果模板
+         * res:{
+         *  status:number,
+         *  datas:{
+         *    data:[],
+         *    sp:[],
+         *    swordskill:[],
+         *    battleskill:[],
+         *    slotskill:[],
+         *  }
+         * }
+         */
+        if (res.status > 0) {
+          ajax.success(res.datas);
         } else {
           ajax.error();
         }
