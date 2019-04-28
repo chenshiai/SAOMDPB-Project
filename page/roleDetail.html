@@ -59,96 +59,58 @@
   <div class="mainPage">
     <!-- 头部 -->
     <header>
-      <a>SAOMD-PB</a>
+      <a onclick="goto('/')">返回首页</a>
       <div class="player_icon">
       </div>
     </header>
     <!-- 顶部留白 -->
     <div class="placeholder-top"></div>
-    <div class="placeholder-top"></div>
+    <!-- <div class="placeholder-top"></div> -->
     <!-- 主体 -->
     <div class="centerBox">
       <div class="role-area">
+
         <div class="role-area-left">
           <!-- 角色信息以及面板 -->
           <section class="section-card">
             <div class="role-info">
               <div class="role-info__cutin">
                 <div class="cutin-img">
-                  <img src="../images/cutin/LLENN_225015.gif" alt="">
+                  <img src="" alt="">
                   <div class="ele">
-                    <img src="../images/icon/Element/icon_attribute_unattributed.png" alt="">
+                    <img src="" alt="">
                   </div>
                   <div class="wea">
-                    <img src="../images/icon/weapon/icon_job_8.png" alt="">
+                    <img src="" alt="">
                   </div>
                 </div>
               </div>
               <div class="role-info__detail">
                 <div class="detail-rarity">
                 </div>
-                <span class="detail-title">战场中的小粉红</span>
-                <span class="detail-name">莲</span>
-                <p class="detail-tips">Tips：<span>100级，四破ATK&CRI</span></p>
+                <span class="detail-title"></span>
+                <span class="detail-name"></span>
+                <p class="detail-tips">Tips：<span></span></p>
               </div>
             </div>
             <div class="role-panel">
               <div class="role-panel__line hpA" style="width: 10%;">
-                HP<span>13209</span>
+                HP<span></span>
               </div>
               <div class="role-panel__line mpA" style="width: 10%;">
-                MP<span>247</span>
+                MP<span></span>
               </div>
               <div class="role-panel__line atkA" style="width: 10%;">
-                ATK<span>4488</span>
+                ATK<span></span>
               </div>
               <div class="role-panel__line defA" style="width: 10%;">
-                DEF<span>2336</span>
+                DEF<span></span>
               </div>
               <div class="role-panel__line criA" style="width: 10%;">
-                CRI<span>3581</span>
+                CRI<span></span>
               </div>
             </div>
           </section>
-
-          <!-- 角色立绘 -->
-          <section class="section-card">
-            <div class="role-design">
-              <div class="role-design__imgs">
-                <div class="item-img">
-                  <input id="item-img1">
-                  <img src="" alt="">
-                </div>
-                <div class="item-img">
-                  <input id="item-img2">
-                  <img src="" alt="">
-                </div>
-                <div class="item-img">
-                  <input id="item-img3">
-                  <img src="" alt="">
-                </div>
-                <div class="item-img">
-                  <input id="item-img4">
-                  <img src="" alt="">
-                </div>
-                <div class="item-img">
-                  <input id="item-img5">
-                  <img src="" alt="">
-                </div>
-              </div>
-              <div class="role-design__links">
-                <label class="item-link" for="item-img1">1</label>
-                <label class="item-link" for="item-img2">2</label>
-                <label class="item-link" for="item-img3">3</label>
-                <label class="item-link" for="item-img4">4</label>
-                <label class="item-link" for="item-img5">5</label>
-              </div>
-            </div>
-          </section>
-
-          <div class="placeholder-top"></div>
-        </div>
-        <div class="role-area-right">
           <!-- 人物特性 -->
           <section class="section-card">
             <div class="ss3-sp">
@@ -158,25 +120,7 @@
             </div>
           </section>
 
-          <!-- 技能槽位 -->
-          <section class="section-card">
-            <div class="slotskill">
-              <span class="card-title">技能槽位</span>
-              <ul class="slotskill-list">
-                <!-- 下面这个克隆用 -->
-                <li id="slotskill-li" style="display:none">
-                    <img src="" alt="">
-                    <div class="slotskill-detail">
-                      <span></span>
-                      <p></p>
-                    </div>
-                </li>
-              </ul>
-            </div>
-            <div class="placeholder-top">
-              <span>鼠标移至图标即可查看技能槽位</span>
-            </div>
-          </section>
+
           <!-- 剑技 -->
           <section class="section-card">
             <div class="swordskill-list">
@@ -213,6 +157,63 @@
               </div>
             </div>
           </section>
+
+        </div>
+        <div class="role-area-right">
+
+          <!-- 技能槽位 -->
+          <section class="section-card">
+            <div class="slotskill">
+              <span class="card-title">技能槽位</span>
+              <ul class="slotskill-list">
+                <!-- 下面这个克隆用 -->
+                <li id="slotskill-li" style="display:none">
+                  <img src="" alt="">
+                  <div class="slotskill-detail">
+                    <span></span>
+                    <p></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="placeholder-top">
+              <span>鼠标移至图标即可查看技能槽位</span>
+            </div>
+          </section>
+          <!-- 角色立绘 -->
+          <section class="section-card">
+            <div class="role-design">
+              <div class="role-design__imgs">
+                <div class="item-img">
+                  <input id="item-img1" readonly>
+                  <img src="" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img2" readonly>
+                  <img src="" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img3" readonly>
+                  <img src="" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img4" readonly> 
+                  <img src="" alt="">
+                </div>
+                <div class="item-img">
+                  <input id="item-img5" readonly>
+                  <img src="" alt="">
+                </div>
+              </div>
+              <div class="role-design__links">
+                <label class="item-link" for="item-img1">1</label>
+                <label class="item-link" for="item-img2">2</label>
+                <label class="item-link" for="item-img3">3</label>
+                <label class="item-link" for="item-img4">4</label>
+                <label class="item-link" for="item-img5">5</label>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
       <div class="card-reply">
@@ -230,8 +231,35 @@
           </div>
         </section>
       </div>
+      <div class="user-reply">
+        <section class="section-card">
+          <span class='card-title'>发表评论</span>
+          共<span class="now-num">0</span>条评论
+          <div class="replyarea">
+            <input type="text" id='username' value="" placeholder="你的名称" />
+            <textarea name="reply" id="reply" cols="30" rows="5"></textarea>
+            <input class='toReply' type='submit' value="提交评论">
+          </div>
+        </section>
+        <section class="section-card allreply">
+          <div class="reply-content" id='replyContent' style="display:none;">
+            <div class="reply-num">3</div>
+            <div class="reply-userinfo">
+              <span class="reply-author">丨ConGreat：</span>
+              <span class="reply-time">2019-4-28</span>
+              <p class="reply-detail">这是一段测试文本！</p>
+            </div>
+          </div>
+        </section>
+        <div class="placeholder-top"></div>
+      </div>
     </div>
-
+    <!-- 返回顶部按钮 -->
+    <div class="goTop">
+        <svg width="50" height="50" class="goTopSvg" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 35 L25 18 L45 35 "></path>
+        </svg>
+      </div>
     <!-- 底部 -->
     <footer>
       <div class="centerBox">
