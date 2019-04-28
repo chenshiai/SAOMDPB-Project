@@ -1,2 +1,5 @@
-# SAOMDPB-Project
-This is my first open source project.
+# SAOMDPB-Project 开发日志
+- 2019/4/28：
+  角色数据请求完毕.....简直就是回调地狱.....Promise还不太会用，后端请求也有点吓人55555。
+- 2019/4/27：
+  想想总得留下点什么吧，学了这么些东西，不记录下来真的会忘，文章又写不来....
