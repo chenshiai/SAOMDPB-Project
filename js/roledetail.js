@@ -195,7 +195,7 @@ function roleDetaiInit() {
       })
     }
   }
-  function setCardinfo(data){
+  function setCardinfo(data) {
     var cardinfo = data.cardinfo[0];
     var cardrole = data.cardrole;
     var cardsImg = document.getElementsByClassName('cards-img')[0];
@@ -208,27 +208,92 @@ function roleDetaiInit() {
     cardsP.innerHTML = cardinfo.title;
 
     var cardsCutin = document.getElementsByClassName('cards-cutin')[0];
-    for(var item of cardrole){
+    for (var item of cardrole) {
       var img = document.createElement('img');
-      img.setAttribute('src',`../images/cutin/${item.cutin}.gif`);
-      img.setAttribute('onclick',`goto(/roles/${item.id})`);
+      img.setAttribute('src', `../images/cutin/${item.cutin}.gif`);
+      img.setAttribute('onclick', `goto('/roles/${item.id}')`);
       cardsCutin.append(img);
     }
+    getAllReply(theId);
   }
+  function getAllReply(roleId) {
+    if (roleId != "" && roleId != null) {
+      var str = "roleId=" + roleId;
+      MPB.ajax({
+        method: "post",
+        url: "/reply/getreply",
+        data: str,
+        success: setAllReply,
+        error: getError
+      })
+    }
+  }
+  var replynum = 0;
+  function setAllReply(data) {
+    var allreply = document.getElementsByClassName('allreply')[0];
+    for (var item of data) {
+      replynum++;
+      var content = document.getElementById('replyContent').cloneNode(true);
+      content.setAttribute('id', 'userReply');
+      content.style.display = 'flex';
+      content.getElementsByClassName('reply-num')[0].innerHTML = replynum;
+      content.getElementsByClassName('reply-author')[0].innerHTML = item.user;
+      content.getElementsByClassName('reply-time')[0].innerHTML = item.time;
+      content.getElementsByClassName('reply-detail')[0].innerHTML = item.centent;
+      allreply.insertBefore(content, allreply.childNodes[0]);
+    }
+    document.getElementsByClassName('now-num')[0].innerHTML = replynum;
+  }
+
+  // 发表评论
+  $('.toReply').click(function () {
+    var myDate = new Date();
+    var data = () => String(myDate.getMonth()).length == 1 ? '0' + String(myDate.getMonth()+1) : myDate.getMonth();
+    var time = myDate.getFullYear() + '-' + data() + '-' + myDate.getDate();
+    var user = $('#username').val();
+    var reply = $('#reply').val();
+    var str = `user=${user}&reply=${reply}&time=${time}&role=${theId}`;
+    function addReply() {
+      $('#username').val("");
+      $('#reply').val("");
+      alert("已经收到了你的评论，感谢~~");
+      var allreply = document.getElementsByClassName('allreply')[0];
+      replynum++;
+      var content = document.getElementById('replyContent').cloneNode(true);
+      content.setAttribute('id', 'userReply');
+      content.style.display = 'flex';
+      content.getElementsByClassName('reply-num')[0].innerHTML = replynum;
+      content.getElementsByClassName('reply-author')[0].innerHTML = user;
+      content.getElementsByClassName('reply-time')[0].innerHTML = time;
+      content.getElementsByClassName('reply-detail')[0].innerHTML = reply;
+      allreply.insertBefore(content, allreply.childNodes[0]);
+      document.getElementsByClassName('now-num')[0].innerHTML = replynum;
+    }
+    MPB.ajax({
+      method: 'post',
+      url: '/reply/addreply',
+      data: str,
+      success: addReply,
+      error: getError
+    })
+  })
+
   // 卡池滚动触发器
   var cardFixed = new MPB.ScrollTrigger(100);
+  var roleArea = document.getElementsByClassName('role-area')[0];
   var cardFixedFunc = {
     after: function () {
       var theNode = document.querySelector('.card-reply');
-      theNode.style.position = 'fixed';
       if (Scroll.getClientWidth() < 770) {
-        theNode.style.top = '60px';
+        theNode.style.width = "100%";
       } else {
+        theNode.style.position = 'fixed';
         theNode.style.top = '90px';
-        theNode.style.right = '10%';
+        theNode.style.right = roleArea.offsetLeft + "px";
       }
     },
     before: function () {
+      theNode.style.margin = "0";
       var theNode = document.querySelector('.card-reply');
       theNode.style.position = 'static';
     }
