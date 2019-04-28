@@ -61,7 +61,9 @@ table {
 p {
   word-wrap: break-word
 }
-
+input, textarea, select, button, meter, progress {
+  /* -webkit-writing-mode: horizontal-tb !important; */
+}
 /* 常规居中用 */
 
 .centerBox {
@@ -435,6 +437,7 @@ header .player_icon{
   display: block;
   z-index: 998;
   background-color: #ffc343;
+  transition: all 500ms ease;
 }
 
 .mask-svg {
@@ -692,6 +695,7 @@ header .player_icon{
 
 .goTop {
   position: fixed;
+  z-index: 999;
   bottom: 20%;
   right: 30px;
   cursor: pointer;
