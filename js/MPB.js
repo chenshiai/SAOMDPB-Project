@@ -113,6 +113,7 @@ const MPB = {
       if (xhr.readyState == 4 && xhr.status == 200) {
         clearTimeout(timer);// 规定时间内完成响应，关闭计时器
         var responseText = xhr.responseText;//返回结果
+        
         var res = JSON.parse(responseText);//回调函数
         /**
          * 返回结果模板
@@ -337,7 +338,6 @@ const MPB = {
         callback(B, true);
         return;
       }
-
       requestAnimationFrame(step);
     };
     step();

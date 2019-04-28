@@ -4,9 +4,7 @@ const Mask = {
     if (document.querySelector('.masks')) {
       var theMask = document.getElementById('masks');
       theMask.style.backgroundColor = color;
-      MPB.easeout(100, 0, 10, (val) => {
-        theMask.style.top = val - 100 + "%";
-      })
+      theMask.style.height = "0";
     } else {
       console.log('在页面上没有找到mask组件！')
     }
@@ -15,9 +13,7 @@ const Mask = {
     if (document.querySelector('.masks')) {
       var theMask = document.getElementById('masks');
       theMask.style.backgroundColor = color;
-      MPB.easeout(100, 0, 10, (val) => {
-        theMask.style.top = - val + "%";
-      })
+      theMask.style.height = "100%";
     } else {
       console.log('在页面上没有找到mask组件！')
     }
@@ -216,13 +212,7 @@ function IndexInit() {
   sel.setAfter(selectEvent.Fiexd);
   sel.setBefore(selectEvent.Relat);
 
-  var goTop = new MPB.ScrollTrigger(600);
-  goTop.setAfter(function () {
-    document.querySelector('.goTop').style.display = "block";
-  });
-  goTop.setBefore(function () {
-    document.querySelector('.goTop').style.display = "none";
-  });
+  
 
   // 滚动触发器结束
 
@@ -257,26 +247,22 @@ function IndexInit() {
   })
 
   // 公告内容初始化
-  function NoticeInit(){
+  function NoticeInit() {
 
     var NoticeGreet = document.querySelectorAll('.Notice-text__greet');
     var i = 0;
-    BasicConfig.Notice.forEach((val)=>{
+    BasicConfig.Notice.forEach((val) => {
       var inner = `<span>${val.title}</span><p><a href='${val.href}' target='_blank'>${val.p}</a></p><div class='greet-time'>${val.time}</div>`;
       NoticeGreet[i].innerHTML = inner;
       i++;
     });
+
+    Mask.loadoverMask('#ffc343');
   }
 
-  // 回滚顶部
-  $('.goTop').click(function () {
-    MPB.easeout(Scroll.getScrollTop(), 0, 8, function (val) {
-      window.scrollTo(0, val);
-    })
-  });
+  
 
   console.log('初始化完成');
-  Mask.loadoverMask('#ffc343');
 
 }
 
@@ -287,3 +273,14 @@ function goto(str) {
     window.location.href = str;
   }, 500);
 }
+// 回滚顶部
+$('.goTop').click(function () {
+  window.scrollTo(0, 0);
+});
+var goTop = new MPB.ScrollTrigger(600);
+  goTop.setAfter(function () {
+    document.querySelector('.goTop').style.display = "block";
+  });
+  goTop.setBefore(function () {
+    document.querySelector('.goTop').style.display = "none";
+  });
