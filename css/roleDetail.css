@@ -1,11 +1,13 @@
-.role-area {
+.role-area, .user-reply {
   width: 800px;
   float: left;
 }
-.card-reply{
+
+.card-reply {
   width: 260px;
   float: right;
 }
+
 .role-area-left, .role-area-right {
   width: 390px;
 }
@@ -27,24 +29,18 @@
   z-index: 80;
   transition: all 0.1s linear;
 }
-.section-card:hover{
+
+.section-card:hover {
   -webkit-box-shadow: 0px 0px 18px 1px rgb(143, 143, 143);
   -moz-box-shadow: 0px 0px 18px 1px rgb(143, 143, 143);
   box-shadow: 0px 0px 18px 1px rgb(143, 143, 143);
 }
 
-.swordskill-list__item,
-.battleskill-list__item,
-.slotskill ul,
-.role-design__links,
-.detail-title, .detail-name,
-.slotskill-detail,
-.slotskill-detail p,
-.cards-detail__span,
-.cards-img{
+.swordskill-list__item, .battleskill-list__item, .slotskill ul, .role-design__links, .detail-title, .detail-name, .slotskill-detail, .slotskill-detail p, .cards-detail__span, .cards-img, .user-reply input, .user-reply textarea {
   display: block;
   margin-top: 10px;
 }
+
 /* 角色信息-头像样式 */
 
 .role-info {
@@ -99,8 +95,7 @@
   font-size: 1.3em;
 }
 
-.detail-tips,
-.role-panel__line {
+.detail-tips, .role-panel__line {
   margin-top: 5px;
 }
 
@@ -114,58 +109,69 @@
   letter-spacing: 1px;
   background-color: #acacac;
 }
-.role-panel__line:hover{
+
+.role-panel__line:hover {
   animation: widthbounce 0.3s linear;
   transform-origin: left;
 }
-@keyframes widthbounce{
-  0%{
-    transform: scale(0.9,1);
+
+@keyframes widthbounce {
+  0% {
+    transform: scale(0.9, 1);
   }
-  60%{
-    transform: scale(1.1,1);
+  60% {
+    transform: scale(1.1, 1);
   }
-  80%{
-    transform: scale(1.05,1);
+  80% {
+    transform: scale(1.05, 1);
   }
-  100%{
-    transform: scale(1,1);
+  100% {
+    transform: scale(1, 1);
   }
 }
+
 .role-panel__line span {
   position: absolute;
   right: 5px;
   text-align: right;
 }
-.hpA{
+
+.hpA {
   background-color: #aae67e;
   color: #385433;
 }
-.mpA{
+
+.mpA {
   background-color: #6edce2;
   color: #005c61;
 }
-.atkA{
+
+.atkA {
   background-color: #fb7979;
   color: #712e2e;
 }
-.defA{
+
+.defA {
   background-color: #a873d5;
   color: #412a55;
 }
-.criA{
+
+.criA {
   background-color: #dca35d;
   color: #543510;
 }
+
 /* 立绘&切换样式 */
-.role-design__imgs{
+
+.role-design__imgs {
   overflow: hidden;
-  height: 658.10666px;
-  padding-bottom: 1.6em;
+  padding-bottom: 177.86666%;
 }
-.item-img{
+
+.item-img {
   position: relative;
 }
+
 .item-img img {
   width: 100%;
 }
@@ -180,59 +186,71 @@
   margin: 0;
   clip: rect(0 0 0 0);
 }
-.role-design__links{
+
+.role-design__links {
   display: flex;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
 }
-.item-link{
+
+.item-link {
   text-align: center;
   font-size: 1.4em;
   line-height: 1.6em;
-  flex:1;
+  flex: 1;
   background-color: #666666;
 }
-.item-link:hover{
+
+.item-link:hover {
   background-color: #ffc343;
-  color:#fff;
+  color: #fff;
 }
 
 /* 技能特性样式 */
-.ss3-sp{
+
+.ss3-sp {
   display: flex;
 }
-.card-title{
+
+.card-title {
   font-size: 1.7em;
   font-weight: bold;
   flex: 1;
   letter-spacing: 1px;
 }
-.sp-item{
+
+.sp-item {
   max-width: 50px;
   flex: 1;
 }
-.sp-item img{
+
+.sp-item img {
   width: 100%;
 }
+
 /* 技能槽位样式 */
-.placeholder-top{
+
+.placeholder-top {
   text-align: center;
   line-height: 80px;
 }
 
-.slotskill ul{
+.slotskill ul {
   display: flex;
 }
-.slotskill ul li{
+
+.slotskill ul li {
   flex: 1;
   max-width: 60px;
 }
-.slotskill ul li img{
+
+.slotskill ul li img {
   width: 100%;
 }
-.slotskill-detail{
+
+.slotskill-detail {
   display: none;
   position: absolute;
   left: 0;
@@ -240,53 +258,143 @@
   height: 110px;
   background-color: #fff;
 }
-.slotskill-detail span{
+
+.slotskill-detail span {
   font-size: 1.4em;
 }
-.slotskill-detail p{
+
+.slotskill-detail p {
   font-size: 1.2em;
 }
-.slotskill ul li:hover img{
+
+.slotskill ul li:hover img {
   animation: heightbounce 0.3s linear;
   transform-origin: bottom;
 }
-.slotskill ul li:hover .slotskill-detail{
+
+.slotskill ul li:hover .slotskill-detail {
   display: block;
 }
-@keyframes heightbounce{
-  0%{
-    transform: scale(1,0.8);
+
+@keyframes heightbounce {
+  0% {
+    transform: scale(1, 0.8);
   }
-  60%{
-    transform: scale(1,1.2);
+  60% {
+    transform: scale(1, 1.2);
   }
-  80%{
-    transform: scale(1,1.1);
+  80% {
+    transform: scale(1, 1.1);
   }
-  100%{
-    transform: scale(1,1);
+  100% {
+    transform: scale(1, 1);
   }
 }
+
 /* 剑技样式 */
-.skill-title,
-.cards-detail__span{
+
+.skill-title, .cards-detail__span {
   font-size: 1.5em;
   text-decoration: underline;
 }
-.swordskill-list__item p,
-.battleskill-list__item p,
-.placeholder-top span,
-.cards-detail__p{
+
+.swordskill-list__item p, .battleskill-list__item p, .placeholder-top span, .cards-detail__p {
   font-size: 1.2em;
   color: #666666;
 }
+
 /* 卡池样式 */
-.cards-img img{
+
+.cards-img img {
   width: 100%;
 }
-.cards-cutin{
+
+.cards-cutin {
   font-size: 0;
 }
-.cards-cutin img{
-  width: 80px;
+
+.cards-cutin img {
+  width: 60px;
+  cursor: pointer;
+}
+
+/* 评论区样式 */
+.replyarea{
+  padding-bottom: 10px;
+}
+.now-num{
+  font-size: 1.3em;
+}
+.replyarea input {
+  width: 200px;
+  line-height: 2em;
+  font-size: 1.4em;
+  padding: 0 5px;
+}
+
+.replyarea textarea {
+  width: 400px;
+  padding: 5px;
+  font-size: 1.4em;
+}
+
+.replyarea .toReply {
+  width: 100px;
+  height: 36px;
+  background-color: #888888;
+  color: rgb(255, 255, 255);
+  overflow: visible;
+  cursor: pointer;
+  box-shadow: 1px 1px #AFC4EA, 2px 2px #AFC4EA;
+  font-size: 1.1em;
+  text-align: center;
+  border:none;
+  box-sizing: border-box;
+}
+.replyarea .toReply:active{
+  border-top:3px solid rgb(0, 44, 126);
+  border-left:3px solid rgb(0, 44, 126); 
+  box-shadow: none;
+}
+.reply-content{
+  display: flex;
+  margin-bottom: 20px;
+}
+.reply-userinfo,
+.reply-num{
+  display: inline-block;
+  vertical-align:top;
+  margin-right: 20px;
+  flex: 1;
+}
+.reply-num{
+  max-width: 40px;
+  height: 40px;
+  border-radius:100%;
+  background-color: #dbdbdb;
+  text-align: center;
+
+}
+.reply-author,
+.reply-num{
+  font-size:1.4em;
+  color: #666666;
+  line-height: 40px;
+}
+.reply-detail,
+.reply-time{
+  font-size: 1.3em;
+}
+.reply-time{
+  color: #AFC4EA;
+  line-height: 40px;
+  float: right;
+}
+@media screen and (max-width: 770px) {
+  .role-area, .user-reply,.role-area-left, .role-area-right{
+    width: 100%;
+  }
+  .replyarea textarea{
+    width: 90%;
+  }
 }
