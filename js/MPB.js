@@ -172,7 +172,7 @@ const MPB = {
     } else {
       throw new Error('你传进来的是个啥!?');
     }
-    MPB.sendRequest();
+    return MPB.sendRequest();
   },
   /**
    * 标签懒加载,将需要添加入html的标签分批加载。
@@ -337,7 +337,7 @@ const MPB = {
         callback(B, true);
         return;
       }
-      
+
       requestAnimationFrame(step);
     };
     step();
