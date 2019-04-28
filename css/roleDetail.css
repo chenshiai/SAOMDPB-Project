@@ -25,6 +25,7 @@
   box-sizing: border-box;
   margin-bottom: 20px;
   z-index: 80;
+  transition: all 0.1s linear;
 }
 .section-card:hover{
   -webkit-box-shadow: 0px 0px 18px 1px rgb(143, 143, 143);
@@ -112,7 +113,6 @@
   position: relative;
   letter-spacing: 1px;
   background-color: #acacac;
-  text-shadow: 1px 1px 0px #000000;
 }
 .role-panel__line:hover{
   animation: widthbounce 0.3s linear;
@@ -137,7 +137,26 @@
   right: 5px;
   text-align: right;
 }
-
+.hpA{
+  background-color: #aae67e;
+  color: #385433;
+}
+.mpA{
+  background-color: #6edce2;
+  color: #005c61;
+}
+.atkA{
+  background-color: #fb7979;
+  color: #712e2e;
+}
+.defA{
+  background-color: #a873d5;
+  color: #412a55;
+}
+.criA{
+  background-color: #dca35d;
+  color: #543510;
+}
 /* 立绘&切换样式 */
 .role-design__imgs{
   overflow: hidden;
