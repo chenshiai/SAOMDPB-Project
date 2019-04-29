@@ -82,14 +82,14 @@ function roleDetaiInit() {
   function setRoleDesign(data) {
     var itemImg = document.getElementsByClassName('item-img');
     var links = document.getElementsByClassName('role-design__links');
-    itemImg[0].querySelector('img').setAttribute('src', `../images/${data.cutin}.jpg`);
-    if (data.rare == 3) {
+    if(data.rare!=3&&data.up!=1){
+      itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/${data.cutin}.jpg`);
+      links[0].style.display = 'none';      
+    }else{
       var i = 1;
       for (; i < itemImg.length; i++) {
         itemImg[i].querySelector('img').setAttribute('src', `../images/${data.cutin}_${i}.jpg`);
       }
-    } else if (data.rare != 2 || data.up != 1) {
-      links[0].style.display = 'none';
     }
   }
 
@@ -293,7 +293,6 @@ function roleDetaiInit() {
       }
     },
     before: function () {
-      theNode.style.margin = "0";
       var theNode = document.querySelector('.card-reply');
       theNode.style.position = 'static';
     }
