@@ -1,4 +1,4 @@
-function roleDetaiInit() {
+﻿function roleDetaiInit() {
   var url = window.location.pathname;
   var theId = url.split('/').pop();
   MPB.ajax({
@@ -86,9 +86,10 @@ function roleDetaiInit() {
       itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/${data.cutin}.jpg`);
       links[0].style.display = 'none';      
     }else{
+itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/r6/${data.cutin}.jpg`);
       var i = 1;
       for (; i < itemImg.length; i++) {
-        itemImg[i].querySelector('img').setAttribute('src', `../images/${data.cutin}_${i}.jpg`);
+        itemImg[i].querySelector('img').setAttribute('src', `../images/pictureL/r6/${data.cutin}_${i}.jpg`);
       }
     }
   }
@@ -107,12 +108,16 @@ function roleDetaiInit() {
     }
   }
   function setRoleSp(data) {
-    var spItem = document.getElementsByClassName('sp-item')[0];
+    var ss3sp = document.getElementsByClassName('ss3-sp')[0];
+    
     for (var item of data.sp) {
       var img = document.createElement('img');
-      img.setAttribute('src', `../images/${item.img}.png`);
+var spItem = document.createElement('div');
+    spItem.className = "sp-item";
+      img.setAttribute('src', `../images/status/${item.img}.png`);
       img.setAttribute('alt', item.sp);
       spItem.append(img);
+      ss3sp.append(spItem);
     }
     getRoleslot(alldata.sslot);
   }
@@ -134,7 +139,7 @@ function roleDetaiInit() {
       var slotskillLi = document.getElementById('slotskill-li').cloneNode(true);
       slotskillLi.style.display = 'inline-block';
       slotskillLi.setAttribute('id', 'slotskillLi');
-      slotskillLi.getElementsByTagName('img')[0].setAttribute('src', `../images/${item.img}.png`);
+      slotskillLi.getElementsByTagName('img')[0].setAttribute('src', `../images/skillslot/slot_skill_icon_${item.img}.png`);
       slotskillLi.getElementsByTagName('span')[0].innerHTML = `${item.ssname}(LV:${item.lv})`;
       slotskillLi.getElementsByTagName('p')[0].innerHTML = item.sstext;
       document.getElementsByClassName('slotskill-list')[0].append(slotskillLi);
@@ -199,7 +204,7 @@ function roleDetaiInit() {
     var cardinfo = data.cardinfo[0];
     var cardrole = data.cardrole;
     var cardsImg = document.getElementsByClassName('cards-img')[0];
-    cardsImg.innerHTML = `<img src='../images/${cardinfo.imgurl}.jpg'/>`;
+    cardsImg.innerHTML = `<img src='../images/card/${cardinfo.imgurl}.jpg'/>`;
 
     var cardsSpan = document.getElementsByClassName('cards-detail__span')[0];
     cardsSpan.innerHTML = cardinfo.name;
