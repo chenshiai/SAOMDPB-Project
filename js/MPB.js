@@ -113,7 +113,7 @@ const MPB = {
       if (xhr.readyState == 4 && xhr.status == 200) {
         clearTimeout(timer);// 规定时间内完成响应，关闭计时器
         var responseText = xhr.responseText;//返回结果
-        
+
         var res = JSON.parse(responseText);//回调函数
         /**
          * 返回结果模板
@@ -344,6 +344,21 @@ const MPB = {
   },
   //加一个循环生成标签功能
   //加一个上下出现的菜单组件
+  "setCookie": function (cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+  },
+  "getCookie": function (cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i].trim();
+      if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+  }
 }
 const Scroll = {
   "ToTop": function () {

@@ -74,6 +74,7 @@ function IndexInit() {
       $("#RoleOpen > .select-open-lines").toggleClass('close');
       swit = 1;
     }
+    MPB.setCookie('userfind',data,1);
     setTimeout(() => {
       MPB.ajax({
         method: "post",
@@ -85,7 +86,18 @@ function IndexInit() {
     }, 500)
 
   })
-
+  if(MPB.getCookie('userfind')!=""&&MPB.getCookie('userfind')!=null&&MPB.getCookie('userfind')!=undefined){
+    var data = MPB.getCookie('userfind');
+    setTimeout(() => {
+      MPB.ajax({
+        method: "post",
+        url: "/userfind",
+        data: data,
+        success: roleCardDate,
+        error: requestError
+      });
+    }, 500)
+  }
   // 回调函数
   // 接收response = response.datas
   function roleCardDate(response) {
