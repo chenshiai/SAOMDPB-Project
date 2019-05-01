@@ -121,10 +121,15 @@ function IndexInit() {
       Mask.loadoverMask('#ffc343');
     }, 500);
   }
+  var popup = new MPBpopup('.saopopup-container',{
+    title:'Message',
+    text:'哎呀，什么也没找到呢<p>检查一下检索条件吧(^_^)</p>',
+    okFunc:()=>{popup.hiddenPopup()} 
+  })
   function requestError() {
-    alert("哎呀，什么也没找到~~")
+    popup.showPopup();
     setTimeout(function () {
-      Mask.loadoverMask('rgba(0,0,0,0.3)');
+      Mask.loadoverMask('#ffc343');
     }, 500);
   }
   // 数据写入
