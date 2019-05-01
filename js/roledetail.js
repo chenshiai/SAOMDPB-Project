@@ -8,9 +8,15 @@
     success: getRoleData,
     error: getError
   });
+  var popup = new MPBpopup('.saopopup-container', {
+    title: 'Message',
+    text: "获取角色信息出现错误<p>点击确定返回首页</p>",
+    okFunc: () => {
+      window.location.href = "/";
+    }
+  })
   function getError() {
-    alert('该角色数据不全，暂时无法查看~请见谅');
-    window.location.href = "/";
+    popup.showPopup();
   }
   // 该页面全局变量，存储当前页面角色的信息
   var alldata = null;
@@ -25,7 +31,7 @@
   }
   function setRoleInfo(data) {
     var roleInfoCutin = document.getElementsByClassName('cutin-img');
-    roleInfoCutin[0].querySelector('img').setAttribute('src', `../images/cutin/${data.cutin}.gif`);
+    roleInfoCutin[0].querySelector('img').setAttribute('src', `http://saoimages.oss-cn-shenzhen.aliyuncs.com/saoImage/${data.cutin}.gif`);
 
     var ele = document.getElementsByClassName('ele');
     ele[0].innerHTML = `<img src='../images/icon/Element/icon_attribute_${data.element}.png' alt=''/>`;
@@ -82,15 +88,15 @@
   function setRoleDesign(data) {
     var itemImg = document.getElementsByClassName('item-img');
     var links = document.getElementsByClassName('role-design__links');
-    if(data.rare!=3&&data.up!=1){
-      itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/${data.cutin}.jpg`);
-      links[0].style.display = 'none';      
-    }else{
-itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/r6/${data.cutin}.jpg`);
+    if (data.rare == 3 || (data.rare == 2 && data.up == 1)) {
+      itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/r6/${data.cutin}.jpg`);
       var i = 1;
       for (; i < itemImg.length; i++) {
         itemImg[i].querySelector('img').setAttribute('src', `../images/pictureL/r6/${data.cutin}_${i}.jpg`);
       }
+    } else {
+      itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/${data.cutin}.jpg`);
+      links[0].style.display = 'none';
     }
   }
 
@@ -105,15 +111,17 @@ itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/r6/${dat
         success: setRoleSp,
         error: getError
       });
+    } else {
+      getRoleslot(alldata.sslot);
     }
   }
   function setRoleSp(data) {
     var ss3sp = document.getElementsByClassName('ss3-sp')[0];
-    
+
     for (var item of data.sp) {
       var img = document.createElement('img');
-var spItem = document.createElement('div');
-    spItem.className = "sp-item";
+      var spItem = document.createElement('div');
+      spItem.className = "sp-item";
       img.setAttribute('src', `../images/status/${item.img}.png`);
       img.setAttribute('alt', item.sp);
       spItem.append(img);
@@ -132,6 +140,8 @@ var spItem = document.createElement('div');
         success: setRoleslot,
         error: getError
       });
+    } else {
+      getSwordskill(alldata.ss1, alldata.ss2);
     }
   }
   function setRoleslot(data) {
@@ -156,6 +166,8 @@ var spItem = document.createElement('div');
         success: setSwordskill,
         error: getError
       });
+    } else {
+      getBattleskill(alldata.bs1, alldata.bs2, alldata.bs3);
     }
   }
   function setSwordskill(data) {
@@ -164,7 +176,7 @@ var spItem = document.createElement('div');
     ssItem[1].getElementsByTagName('span')[0].innerHTML = `${data.swordskill[1].ssname}(MP：${data.swordskill[1].ssmp})`;
     ssItem[0].getElementsByTagName('p')[0].innerHTML = data.swordskill[0].sstext;
     ssItem[1].getElementsByTagName('p')[0].innerHTML = data.swordskill[1].sstext;
-    getBattleskill(alldata.bs1, alldata.bs2, alldata.bs3)
+    getBattleskill(alldata.bs1, alldata.bs2, alldata.bs3);
   }
   function getBattleskill(bs1, bs2, bs3) {
     if (bs1 != "" && bs1 != null) {
@@ -176,6 +188,8 @@ var spItem = document.createElement('div');
         success: setBattleskill,
         error: getError
       });
+    } else {
+      getCardinfo(alldata.card);
     }
   }
   function setBattleskill(data) {
@@ -198,6 +212,8 @@ var spItem = document.createElement('div');
         success: setCardinfo,
         error: getError
       })
+    } else {
+      getAllReply(theId);
     }
   }
   function setCardinfo(data) {
@@ -215,7 +231,7 @@ var spItem = document.createElement('div');
     var cardsCutin = document.getElementsByClassName('cards-cutin')[0];
     for (var item of cardrole) {
       var img = document.createElement('img');
-      img.setAttribute('src', `../images/cutin/${item.cutin}.gif`);
+      img.setAttribute('src', `http://saoimages.oss-cn-shenzhen.aliyuncs.com/saoImage/${item.cutin}.gif`);
       img.setAttribute('onclick', `goto('/roles/${item.id}')`);
       cardsCutin.append(img);
     }
@@ -253,15 +269,18 @@ var spItem = document.createElement('div');
   // 发表评论
   $('.toReply').click(function () {
     var myDate = new Date();
-    var data = () => String(myDate.getMonth()).length == 1 ? '0' + String(myDate.getMonth()+1) : myDate.getMonth();
+    var data = () => String(myDate.getMonth()).length == 1 ? '0' + String(myDate.getMonth() + 1) : myDate.getMonth();
     var time = myDate.getFullYear() + '-' + data() + '-' + myDate.getDate();
-    var user = $('#username').val();
+    var user = $('#username').val() || "Anonymous";
     var reply = $('#reply').val();
     var str = `user=${user}&reply=${reply}&time=${time}&role=${theId}`;
     function addReply() {
       $('#username').val("");
       $('#reply').val("");
-      alert("已经收到了你的评论，感谢~~");
+      popup.showPopup({
+        text: "已经收到了你的评论<p>感谢~~</p>",
+        okFunc: popup.hiddenPopup
+      })
       var allreply = document.getElementsByClassName('allreply')[0];
       replynum++;
       var content = document.getElementById('replyContent').cloneNode(true);
@@ -274,13 +293,20 @@ var spItem = document.createElement('div');
       allreply.insertBefore(content, allreply.childNodes[0]);
       document.getElementsByClassName('now-num')[0].innerHTML = replynum;
     }
-    MPB.ajax({
-      method: 'post',
-      url: '/reply/addreply',
-      data: str,
-      success: addReply,
-      error: getError
-    })
+    if (reply != null && reply != "") {
+      MPB.ajax({
+        method: 'post',
+        url: '/reply/addreply',
+        data: str,
+        success: addReply,
+        error: getError
+      })
+    } else {
+      popup.showPopup({
+        text: "无法发表<p>说点什么吧~(^_^)</p>",
+        okFunc: popup.hiddenPopup
+      })
+    }
   })
 
   // 卡池滚动触发器
