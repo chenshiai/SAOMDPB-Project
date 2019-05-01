@@ -1,10 +1,10 @@
-const BasicConfig = {
+﻿const BasicConfig = {
   Notice: [
     {
-      title: "Hello！大家吼！这里是新的SAOMD人物图鉴首页喔~!",
+      title: "站点更新期间，新池立绘可能没那么快上传。可能要节后了···",
       href:"",
       p:"",
-      time: "2019-04-19"
+      time: "2019-04-30"
     },
     {
       title: "Q&A",
@@ -32,23 +32,24 @@ const BasicConfig = {
     }
   ],
   newRoles: [
+
     {
-      src: "./images/newRoles/017.png"
+      src: "http://saoimages.oss-cn-shenzhen.aliyuncs.com/newRoles/019.png"
     },
     {
-      src: "./images/newRoles/016.png"
+      src: "http://saoimages.oss-cn-shenzhen.aliyuncs.com/newRoles/018.png"
     },
     {
-      src: "./images/newRoles/015.png"
+      src: "http://saoimages.oss-cn-shenzhen.aliyuncs.com/newRoles/017.png"
     },
     {
-      src: "./images/newRoles/014.png"
+      src: "http://saoimages.oss-cn-shenzhen.aliyuncs.com/newRoles/016.png"
     },
     {
-      src: "./images/newRoles/012.png"
+      src: "http://saoimages.oss-cn-shenzhen.aliyuncs.com/newRoles/015.png"
     },
     {
-      src: "./images/newRoles/011.png"
+      src: "http://saoimages.oss-cn-shenzhen.aliyuncs.com/newRoles/014.png"
     }
   ]
 }
