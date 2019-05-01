@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 
 <head>
@@ -9,11 +9,12 @@
   <title>SAOMD-人物图鉴</title>
   <link rel="shortcut icon" href="../images/favicon.ico" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
-  <link rel="stylesheet" href="../css/index.css">
-  <link rel="stylesheet" href="../css/index_760.css">
-  <link rel="stylesheet" href="../css/roleDetail.css">
-  <script src="../js/MPB.js"></script>
-  <script src="../JSON/BasicConfig.js"></script>
+  <link rel="stylesheet" href="../css/index.css?t=290419">
+  <link rel="stylesheet" href="../css/index_760.css?t=290419">
+  <link rel="stylesheet" href="../css/roleDetail.css?t=290419">
+  <link rel="stylesheet" href="../components/MPBC.css?t010419">
+  <script src="../js/MPB.js?t=290419"></script>
+  <script src="../JSON/BasicConfig.js?t=290419"></script>
 </head>
 
 <body ontouchstart>
@@ -296,10 +297,22 @@
       </div>
     </div>
   </section>
+  <!-- 弹窗 -->
+  <div class="saopopup-container">
+    <div class="saopopup-frame">
+      <div class="saopopup-title"></div>
+      <div class="saopopup-text"></div>
+      <div class="saopopup-bottom">
+        <div class="saopopup-button-no">取消</div>
+        <div class="saopopup-button-ok">确定</div>
+      </div>
+    </div>
+  </div>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 <script src="../js/index.js"></script>
-<script src="../js/roledetail.js"></script>
+<script src="../js/roledetail.js?t=300419"></script>
+<script src="../components/MPBC.js?t=010519"></script>
 <script>
   $(document).ready(() => {
     roleDetaiInit();
