@@ -26,7 +26,9 @@
     alldata = res.data[0];
     setRoleInfo(alldata);
     setRolePanel(alldata);
-    setRoleDesign(alldata);
+    $('.role-design').click(function(){
+      setRoleDesign(alldata);
+    });
     getRoleSp(alldata.sp);
   }
   function setRoleInfo(data) {
