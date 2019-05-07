@@ -312,7 +312,6 @@
   })
 
   // 卡池滚动触发器
-  var cardFixed = new MPB.ScrollTrigger(100);
   var roleArea = document.getElementsByClassName('role-area')[0];
   var cardFixedFunc = {
     after: function () {
@@ -330,8 +329,7 @@
       theNode.style.position = 'static';
     }
   }
-  cardFixed.setAfter(cardFixedFunc.after);
-  cardFixed.setBefore(cardFixedFunc.before);
+  new MPB.ScrollTrigger(100,cardFixedFunc.after,cardFixedFunc.before);
 
   // 公告点击展开按钮
   var nwit = 1;

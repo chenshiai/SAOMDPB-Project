@@ -2,7 +2,7 @@
  * SAOMDPB项目用对象字面量API
  * 作者：丨ConGreat
  * 起始时间：2019-04-23
- * 最后修改时间：2019-04-26
+ * 最后修改时间：2019-05-07
  */
 const MPB = {
   /**
@@ -31,7 +31,7 @@ const MPB = {
     return MPB.Object.xhr;
   },
   /**
-   * 创建一个计时器队列对象。可以用来做防抖...嗯就是这样。
+   * 创建一个计时器队列对象。可以用来做防抖,但不是为了防抖而作的...嗯就是这样。
    * @function open(bool) 调用一次该计时器，参数bool默认false，所有计时器同步执行，
    * true则进行一次异步调用。
    * @function close() 直接关闭该对象上的所有计时器。
@@ -91,6 +91,26 @@ const MPB = {
       clearTimeout(_timer);
       _asyncArr = [];
       return true;
+    }
+  },
+  /**
+   * 防抖处理，用着方法包住想要防抖的方法
+   * @param {function} abort 需要调用的函数 
+   * @param {number} time 设置抖动时间
+   */
+  "Processor": function (abort, time) {
+    this.timeoutId = null; // 相当于延时setTimeout的一个标记，方便清除的时候使用
+    this.time = time || 100;
+    this.abort = abort || function(){};
+    let self = this;
+
+    // 初始处理调用的方法
+    // 在实际需要触发的代码外面包一层延时clearTimeout方法，以便控制连续触发带来的无用调用
+    this.process = function() {
+      clearTimeout(self.timeoutId); // 先清除之前的延时，并在下面重新开始计算时间
+      self.timeoutId = setTimeout(function () { 
+        self.abort();
+      }, self.time) // 如果还没有执行就又被触发，会根据上面的clearTimeout来清除并重新开始计算
     }
   },
   /**
@@ -283,23 +303,11 @@ const MPB = {
    * @function setAfter(function) 设置触发后调用。
    * @function setBefore(function) 设置触发前调用。
    */
-  "ScrollTrigger": function (scrollTop) {
+  "ScrollTrigger": function (scrollTop, afterFunc, beforeFunc) {
     var _scrollTop = scrollTop,
-      _after = null,
-      _before = null;
+      _after = afterFunc || function () { },
+      _before = beforeFunc || function () { };
 
-    /**
-     * 设置触发后调用的方法
-     */
-    this.setAfter = function (a) {
-      _after = new MPB.Timer(a, 100);//使用Timer对象来对scroll事件进行防抖处理
-    }
-    /**
-     * 设置触发前调用的方法
-     */
-    this.setBefore = function (b) {
-      _before = new MPB.Timer(b, 100);;
-    }
     this.getData = function () {
       return {
         after: _after,
@@ -307,15 +315,13 @@ const MPB = {
       }
     }
     function _trigger() {
-      if (Scroll.getScrollTop() >= _scrollTop && _after && _before) {
-        _after.close();
-        _after.open();
+      if (Scroll.getScrollTop() >= _scrollTop) {
+        _after();
       } else {
-        _before.close();
-        _before.open();
+        _before();
       }
     }
-    Scroll.windowScroll(_trigger)
+    Scroll.windowScroll(new MPB.Processor(_trigger,100).process);
   },
   /**
    * 来自张鑫旭老师的缓动小算法
