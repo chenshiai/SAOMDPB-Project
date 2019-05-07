@@ -300,8 +300,8 @@ const MPB = {
   /**
    * 窗口滚动触发器(防抖版)
    * @param {number} scrollTop 滚动触发条件。
-   * @function setAfter(function) 设置触发后调用。
-   * @function setBefore(function) 设置触发前调用。
+   * @param {function} afterFunc 设置触发后调用。
+   * @param {function} beforeFunc 设置触发前调用。
    */
   "ScrollTrigger": function (scrollTop, afterFunc, beforeFunc) {
     var _scrollTop = scrollTop,
