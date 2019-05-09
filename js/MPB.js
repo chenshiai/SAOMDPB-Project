@@ -2,12 +2,12 @@
  * SAOMDPB项目用对象字面量API
  * 作者：丨ConGreat
  * 起始时间：2019-04-23
- * 最后修改时间：2019-05-07
+ * 最后修改时间：2019-05-09
  */
 const MPB = {
   /**
-   * 如果多次调用重复的东西，对性能还是会有点影响的！
-   * 所以，当第一次调用的时候创建一个实例存在这里。
+   * 如果多次调用重复的东西，对性能还是会有点影响的！  
+   * 所以，当第一次调用的时候创建一个实例存在这里。  
    * 之后再次调用就直接用实例啦！
    */
   "Object": {
@@ -31,7 +31,8 @@ const MPB = {
     return MPB.Object.xhr;
   },
   /**
-   * 创建一个计时器队列对象。可以用来做防抖,但不是为了防抖而作的...嗯就是这样。
+   * BANED  
+   * 创建一个计时器队列对象。可以用来做防抖,但不是为了防抖而做的。
    * @function open(bool) 调用一次该计时器，参数bool默认false，所有计时器同步执行，
    * true则进行一次异步调用。
    * @function close() 直接关闭该对象上的所有计时器。
@@ -94,6 +95,56 @@ const MPB = {
     }
   },
   /**
+   * 创建一个队列对象。
+   * @function enqueue(data) 入队列
+   * @function dequeue(data) 出队列
+   * @function front() 获取队列第一个
+   * @function back() 获取队列最后一个
+   * @function toString() 打印队列
+   * @function isEmpty() 判断队列是否为空
+   * @function count() 返回队列中元素的个数
+   */
+  "Queue": function () {
+    this.queue = [];//队列
+
+    //入队列
+    this.enqueue = function (data) {
+      return this.queue.push(data);
+    }
+    //出队列
+    this.dequeue = function (data) {
+      return this.queue.shift(data);
+    }
+    //获取队列第一个
+    this.front = function () {
+      return this.queue[0];
+    }
+    //获取队列最后一个
+    this.back = function () {
+      return this.queue[this.queue.length - 1];
+    }
+    //打印队列
+    this.toString = function() {
+      var retStr = "";
+      for (var i = 0; i < this.queue.length; ++i) {
+        retStr += this.queue[i] + " "
+      }
+      return retStr;
+    }
+    //判断队列是否为空
+    this.isEmpty = function() {
+      if (this.queue.length == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    //返回队列中元素的个数
+    this.count = function() {
+      return this.queue.length;
+    }
+  },
+  /**
    * 防抖处理，用着方法包住想要防抖的方法
    * @param {function} abort 需要调用的函数 
    * @param {number} time 设置抖动时间
@@ -101,61 +152,17 @@ const MPB = {
   "Processor": function (abort, time) {
     this.timeoutId = null; // 相当于延时setTimeout的一个标记，方便清除的时候使用
     this.time = time || 100;
-    this.abort = abort || function(){};
+    this.abort = abort || function () { };
     let self = this;
 
     // 初始处理调用的方法
     // 在实际需要触发的代码外面包一层延时clearTimeout方法，以便控制连续触发带来的无用调用
-    this.process = function() {
+    this.process = function () {
       clearTimeout(self.timeoutId); // 先清除之前的延时，并在下面重新开始计算时间
-      self.timeoutId = setTimeout(function () { 
+      self.timeoutId = setTimeout(function () {
         self.abort();
       }, self.time) // 如果还没有执行就又被触发，会根据上面的clearTimeout来清除并重新开始计算
     }
-  },
-  /**
-   * 发送XMLHttpRequest请求，不对外开放。
-   */
-  "sendRequest": function (req) {
-    var xhr = MPB.XMLHttpRequest();
-    var ajax = MPB.Object.ajax || req;
-    xhr.open(ajax.method, ajax.url, ajax.async);
-    xhr.setRequestHeader("Content-type", ajax.contentType);
-    ajax.beforeSend();
-    xhr.send(ajax.data);
-
-    var timer = setTimeout(function () {
-      xhr.abort();
-      alert('网络连接超时~')
-    }, ajax.timeout)//设置计时器
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        clearTimeout(timer);// 规定时间内完成响应，关闭计时器
-        var responseText = xhr.responseText;//返回结果
-
-        var res = JSON.parse(responseText);//回调函数
-        /**
-         * 返回结果模板
-         * res:{
-         *  status:number,
-         *  datas:{
-         *    data:[],
-         *    sp:[],
-         *    swordskill:[],
-         *    battleskill:[],
-         *    slotskill:[],
-         *  }
-         * }
-         */
-        if (res.status > 0) {
-          ajax.success(res.datas);
-        } else {
-          ajax.error();
-        }
-      }
-    }
-    ajax.complete();
   },
   /**
    * ajax请求方法，服务器返回的要是json！
@@ -170,51 +177,82 @@ const MPB = {
    * @param {number} timeout 设置本地的请求超时时间，默认60秒（可选）。
    * @param {function} complete 请求完毕回调函数（可选）。
    */
-  "ajax": function (req) {
-    var ajax = null;
-    if (typeof req == "object") {
-      ajax = {
-        method: req.method || "get",
-        url: req.url || (() => { throw new Error('地址都不给人家！') })(),
-        data: req.data || null,
-        contentType: req.contentType || "application/x-www-form-urlencoded",
-        dataType: req.dataType || "",// 尚未实现.....
-        async: req.async || true,
-        cache: req.cache || true,
-        timeout: req.timeout || 60000,
-        beforeSend: req.beforeSend || function () { },
-        success: req.success || (() => { throw new Error('给我一个成功回调函数嘛！') })(),
-        error: req.error || function () { console.log("服务器返回错误！") },
-        complete: req.complete || function () { }
+  "ajax": function ({
+    method = "get",
+    url = function () { throw new Error('地址都不给人家！') },
+    data = null,
+    contentType = "application/x-www-form-urlencoded",
+    dataType = "",// 尚未实现.....
+    async = true,
+    cache = true,
+    timeout = 60000,
+    beforeSend = function () { },
+    success = function () { console.log('给我一个成功回调函数嘛！') },
+    error = function () { console.log("服务器返回错误！") },
+    complete = function () { },
+    timeoutTodo = function () { }
+  }) {
+    if (typeof url === "function") {
+      url();
+    }
+    var xhr = MPB.XMLHttpRequest();
+    xhr.open(method, url, async);
+    xhr.setRequestHeader("Content-type", contentType);
+    beforeSend();
+    xhr.send(data);
+
+    var timer = setTimeout(function () {
+      xhr.abort();
+      timeoutTodo();
+    }, timeout)//设置计时器
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        clearTimeout(timer);// 规定时间内完成响应，关闭计时器
+        var responseText = xhr.responseText;//返回结果
+        var res = JSON.parse(responseText);//回调函数
+        /**
+         * 返回结果模板
+         * res:{
+         *  status:number,
+         *  datas:{
+         *    ...你的数据
+         *  }
+         * }
+         */
+        if (res.status > 0) {
+          success(res.datas);
+        } else {
+          error();
+        }
+        complete();
       }
     }
-    if (ajax != null) {
-      MPB.Object.ajax = ajax;
-    } else {
-      throw new Error('你传进来的是个啥!?');
-    }
-    return MPB.sendRequest();
   },
   /**
    * 标签懒加载,将需要添加入html的标签分批加载。
    * @param {array} data json对象数组。
    * @param {number} num 你希望每批加载多少。
    */
-  "Taglazyload": function (data, callback) {
+  "Taglazyload": function (data, callback, complete) {
     var _data = [...data],
-      _callback = callback;
+      _callback = callback,
+      _complete = complete || function () { };
+
     /**
      * Taglazyload对象上的方法。
-     * @param {number} num 设置每批加载多少。
+     * @param {number} num 设置每批多少数据。
      */
     this.lazyload = function (num) {
       if (_data.length < num && _data.length > 0) {
         num = _data.length;
       }
-      for (var i = num; i-- && _data.length > 0;) {
+      for (let i = num; i-- && _data.length > 0;) {
         _callback(_data.shift());
       }
-      return _data.length === 0;
+      if (_data.length === 0) {
+        _complete();
+      }
     }
     /**
      * 查看当前-标签懒加载-对象的data。
@@ -237,58 +275,59 @@ const MPB = {
    * @param {function} callback 回调函数（可选）。
    * @param {boolean} async 是否异步加载，默认true。
    */
-  "load": function (datas) {
-    var data = {
-      urls: datas.urls || (() => { throw new Error('必须传入一个地址数组才行哦！') }),
-      type: datas.type || "script",
-      tagname: datas.tagname || "head",
-      callback: datas.callback || function () { },
-      async: datas.async || true
-    };
+  "load": function ({
+    urls = function () { throw new Error('必须传入一个存地址的数组才行哦！') },
+    type = "script",
+    tagname = "head",
+    callback = function () { },
+    async = true
+  }) {
+    if (typeof urls === "function") {
+      urls();
+    }
     /**
      * 根据type来设置其专有属性
      */
-    function createNode(data) {
-      var tag = document.createElement(data.type);
-      var allTag = {
-        "script": () => { tag.setAttribute("type", "text/javascript") },
-        "img": () => { tag.setAttribute("alt", "image") },
-        "或许还有更多功能？": ""
+    function createNode(type) {
+      var tag = document.createElement(type);
+      switch (type) {
+        case "script": { tag.setAttribute("type", "text/javascript"); break; }
+        case "img": { tag.setAttribute("alt", "image"); break; }
+        default: break;
       }
-      allTag[data.type]();
       return tag;
     }
-    var HEAD = document.querySelector(data.tagname) || document.documentElement;
-    var s = [], len = data.urls.length;
+    var HEAD = document.querySelector(tagname) || document.documentElement;
+    var s = [], len = urls.length;
 
     //加载
-    if (data.async) {
+    if (async) {
       var loaded = 0;
       for (var i = 0; i < len; i++) {
-        s[i] = createNode(data);
+        s[i] = createNode(type);
         s[i].onload = s[i].onreadystatechange = function () { //Attach handlers for all browsers
-          if (!0 || this.readyState == "loaded" || this.readyState == "complete") {
+          if (!0 || this.readyState === "loaded" || this.readyState === "complete") {
             loaded++;
             this.onload = this.onreadystatechange = null;
             this.parentNode.removeChild(this);
-            if (loaded == len) data.callback();
+            if (loaded === len) callback();
           }
         }
-        s[i].setAttribute("src", data.urls[i]);
+        s[i].setAttribute("src", urls[i]);
         HEAD.appendChild(s[i]);
       }
     } else {
       var recursiveLoad = function (i) {
-        s[i] = createNode(data);
-        s[i].setAttribute("src", data.urls[i]);
+        s[i] = createNode(type);
+        s[i].setAttribute("src", urls[i]);
         s[i].onload = s[i].onreadystatechange = function () { //兼容浏览器
-          if (!0 || this.readyState == "loaded" || this.readyState == "complete") {
+          if (!0 || this.readyState === "loaded" || this.readyState === "complete") {
             this.onload = this.onreadystatechange = null;
             this.parentNode.removeChild(this);//下载完后，从html文档中移除
             if (i != (len - 1)) {
               recursiveLoad(i + 1);//递归
             } else {
-              data.callback();
+              callback();
             }
           }
         }
@@ -321,7 +360,7 @@ const MPB = {
         _before();
       }
     }
-    Scroll.windowScroll(new MPB.Processor(_trigger,100).process);
+    Scroll.windowScroll(new MPB.Processor(_trigger, 100).process);
   },
   /**
    * 来自张鑫旭老师的缓动小算法
