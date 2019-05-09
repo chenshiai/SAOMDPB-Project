@@ -103,19 +103,17 @@ function IndexInit() {
   function roleCardDate(response) {
     var loadmore = document.getElementsByClassName("loadmore");
     document.querySelector('.rolecard-list').innerHTML = '';
-    var lazyload = new MPB.Taglazyload(response.data, inputRoleCard);
-    loadmore[0].style.display = "block";
-    loadmore[0].onclick = null;
-    loadmore[0].innerHTML = "点击加载更多";
-    if (lazyload.lazyload(10)) {
+    function overload(){
       loadmore[0].innerHTML = "没有更多了！";
       loadmore[0].onclick = null;
     }
+    var lazyload = new MPB.Taglazyload(response.data, inputRoleCard, overload);
+    loadmore[0].style.display = "block";
+    loadmore[0].onclick = null;
+    loadmore[0].innerHTML = "点击加载更多";
+    lazyload.lazyload(10)
     loadmore[0].onclick = function () {
-      if (lazyload.lazyload(10)) {
-        loadmore[0].innerHTML = "没有更多了！";
-        loadmore[0].onclick = null;
-      }
+      lazyload.lazyload(10)
     }
     setTimeout(function () {
       Mask.loadoverMask('#ffc343');
