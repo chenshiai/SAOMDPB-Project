@@ -1,4 +1,6 @@
 # SAOMDPB-Project 开发日志
+- 2019/5/9:  
+  优化了一下MPB.js。 Taglazyload新增参数{function} complete，可选，全部加载完调用。新增Queue构造方法，用于创建一个队列。计时器队列对象构造方法停止更新。
 - 2019/5/7:  
   更新了MPBC中popup组件的文字样式，MPB.js新增防抖专用构造函数。MPB.ScrollTrigger的使用方法修改。
 - 2019/5/4:  
