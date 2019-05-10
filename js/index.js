@@ -86,6 +86,7 @@ function IndexInit() {
     }, 500)
 
   })
+  // 获取cookie
   if (MPB.getCookie('userfind') != "" && MPB.getCookie('userfind') != null && MPB.getCookie('userfind') != undefined) {
     var data = MPB.getCookie('userfind');
     setTimeout(() => {
@@ -103,7 +104,7 @@ function IndexInit() {
   function roleCardDate(response) {
     var loadmore = document.getElementsByClassName("loadmore");
     document.querySelector('.rolecard-list').innerHTML = '';
-    function overload(){
+    function overload() {
       loadmore[0].innerHTML = "没有更多了！";
       loadmore[0].onclick = null;
     }
@@ -126,9 +127,9 @@ function IndexInit() {
     oneKey: true
   })
   function requestError() {
-    popup.showPopup();
+    Mask.loadoverMask('#ffc343');
     setTimeout(function () {
-      Mask.loadoverMask('#ffc343');
+      popup.showPopup();
     }, 500);
   }
   // 数据写入
@@ -268,7 +269,7 @@ function IndexInit() {
       NoticeGreet[i].innerHTML = inner;
       i++;
     });
-   
+
   }
   console.log('初始化完成');
   Mask.loadoverMask('#ffc343');
@@ -285,7 +286,7 @@ function goto(str) {
 $('.goTop').click(function () {
   window.scrollTo(0, 0);
 });
-var goTop = new MPB.ScrollTrigger(600,
+var goTop = new MPB.ScrollTrigger(500,
   function () {
     document.querySelector('.goTop').style.display = "block";
   },

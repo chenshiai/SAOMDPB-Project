@@ -13,7 +13,8 @@
     text: "获取角色信息出现错误<p>点击确定返回首页</p>",
     okFunc: () => {
       window.location.href = "/";
-    }
+    },
+    oneKey:true
   })
   function getError() {
     popup.showPopup();
@@ -319,14 +320,13 @@
       if (Scroll.getClientWidth() < 770) {
         theNode.style.width = "100%";
       } else {
-        theNode.style.position = 'fixed';
-        theNode.style.top = '90px';
+        theNode.classList.add('card-animate');
         theNode.style.right = roleArea.offsetLeft + "px";
       }
     },
     before: function () {
       var theNode = document.querySelector('.card-reply');
-      theNode.style.position = 'static';
+      theNode.classList.remove('card-animate');
     }
   }
   new MPB.ScrollTrigger(100,cardFixedFunc.after,cardFixedFunc.before);
