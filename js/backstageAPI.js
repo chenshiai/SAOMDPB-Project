@@ -58,7 +58,7 @@ const notice = {
     let thisNode = notice.getNoticeItem(id);
     let noticeList = document.getElementsByClassName('notice-list')[0];
     noticeList.removeChild(thisNode);
-    if(backstageAPI.deleteNotice({id})!=[]){
+    if(backstageAPI.deleteNotice(`id=${id}`)!=[]){
       backstagePopup.showPopup({
         text:"删除成功！"
       })
@@ -66,12 +66,8 @@ const notice = {
   },
   submit:function(id){
     let thisNode = notice.getNoticeItem(id);
-    let text = thisNode.getElementsByTagName('textarea')[0].innerHTML;
-    let data = {
-      id,
-      text
-    };
-    
+    let text = thisNode.getElementsByTagName('textarea')[0].value;
+    let data = `id=${id}&text=${text}`;
     if(backstageAPI.updateNotice(data)!=[]){
       backstagePopup.showPopup({
         text:"提交成功！"
@@ -88,7 +84,7 @@ const notice = {
     let time = noticeAdd.getElementsByTagName('input')[1].value;
     let text = noticeAdd.getElementsByTagName('input')[2].value;
     if(title&&time&&text){
-      if(backstageAPI.addNotice({title,time,text})){
+      if(backstageAPI.addNotice(`title=${title}&time=${time}&text=${text}`)){
         backstagePopup.showPopup({
           text:`新加公告成功！<br>TITLE:${title}<br>TIME:${time}<br>TEXT:${text}<br>`
         })
