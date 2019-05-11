@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SAOMDPB后台</title>
+  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <link rel="stylesheet" href="../css/index.css?t=290419">
+  <link rel="stylesheet" href="../css/roleDetail.css">
+  <link rel="stylesheet" href="../components/MPBC.css?t=290419">
+  <link rel="stylesheet" href="../css/backstage.css">
+  <script src="../js/MPB.js?t=290419"></script>
+  <script src="../JSON/BasicConfig.js?t=290419"></script>
+</head>
+
+<body>
+  <!-- MASK SVG 四圆点加载 -->
+  <div class="masks" id="masks">
+    <div class="mask-svg">
+      <div class="mask-text">
+        Now Loading···
+      </div>
+      <svg class="lds-message" width="80px" height="80px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid">
+        <g transform="translate(20 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.99275 0.99275)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(40 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.773605 0.773605)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.25s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(60 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.42525 0.42525)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.125s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(80 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.113418 0.113418)">
+            <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <!-- 顶部留白 -->
+  <div class="placeholder-top"></div>
+  <div class="mainPage">
+    <!-- 头部 -->
+    <header>
+      <a href="#">SAOMD-PB</a>
+      <div class="player_icon">
+      </div>
+    </header>
+    <!-- 公告相关 -->
+    <div class="centerBox">
+      <div class="section-title">
+        <span>公告相关</span>
+      </div>
+      <section class="section-card">
+        <div class="notice-show">
+          <span class="card-title">所有公告</span>
+          <span class=" notice-button" onclick="notice.add()">新增公告</span>
+          <div class="notice-add">
+            <input type="text" name="title" value="" placeholder="这里写标题(不可见)"/>
+            <input type="text" name="time" value="" placeholder="时间格式(YYYY-MM-DD)"/>
+            <input type="text" name="text" value="" placeholder="这里写内容" style="width:50%"/>
+          </div>
+          <ul class="notice-list">
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+      <div class="centerBox">
+        <span>
+          Copyright © 丨ConGreat
+        </span>
+      </div>
+    </footer>
+  </div>
+  <!-- 弹窗 -->
+  <div class="saopopup-container">
+      <div class="saopopup-frame">
+        <div class="saopopup-title"></div>
+        <div class="saopopup-text"></div>
+        <div class="saopopup-bottom">
+          <div class="saopopup-button-no">
+  
+            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+              <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+  
+              <g>
+                <title>background</title>
+                <rect fill="rgba(0,0,0,0)" id="canvas_background" height="42" width="42" y="-1" x="-1" />
+                <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                  <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                </g>
+              </g>
+              <g>
+                <title>Layer 1</title>
+                <ellipse stroke="#e34f61" ry="19.19463" rx="19.19463" id="svg_1" cy="20.058724" cx="20.067113"
+                  stroke-width="1.5" fill="#fff" />
+                <ellipse stroke="#e34f61" ry="1.81208" rx="1.81208" id="svg_2" cy="19.999999" cx="19.999999"
+                  stroke-opacity="null" stroke-width="29" fill="#fff" />
+                <rect stroke="#000" transform="rotate(45 20.000000000000007,19.999999999999996) " id="svg_9"
+                  height="4.966443" width="18.422309" y="17.516778" x="10.788844" fill-opacity="null"
+                  stroke-opacity="null" stroke-width="0" fill="#fff" />
+                <rect stroke="#000" transform="rotate(-45 19.999999999999996,19.999999999999996) " id="svg_10"
+                  height="4.966443" width="17.947741" y="17.516779" x="11.026131" fill-opacity="null"
+                  stroke-opacity="null" stroke-width="0" fill="#fff" />
+              </g>
+            </svg>
+          </div>
+          <div class="saopopup-button-ok">
+            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+              <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+              <g>
+                <title>background</title>
+                <rect fill="rgba(0,0,0,0)" id="canvas_background" height="42" width="42" y="-1" x="-1" />
+                <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                  <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                </g>
+              </g>
+              <g>
+                <title>Layer 1</title>
+                <ellipse stroke="#4d97f2" ry="19.19463" rx="19.19463" id="svg_1" cy="20.058724" cx="20.067113"
+                  stroke-width="1.5" fill="#fff" />
+                <ellipse ry="13.020134" rx="13.020134" id="svg_2" cy="20.058725" cx="20.201342" fill-opacity="0"
+                  stroke-opacity="null" stroke-width="7.5" stroke="#4d97f2" fill="#fff" />
+                <ellipse ry="2.416107" rx="2.416107" id="svg_3" cy="20.192953" cx="20.067114" fill-opacity="0"
+                  stroke-opacity="null" stroke-width="7.5" stroke="#4d97f2" fill="#fff" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+  <script src="../components/MPBC.js?t=290419"></script>
+  <script src="../js/index.js"></script>
+  <script src="../js/backstageAPI.js"></script>
+  <script>
+    $(document).ready(function () {
+      backstageInit();
+      Mask.loadoverMask("#ffc343");
+    });
+  </script>
+</body>
+
+</html>

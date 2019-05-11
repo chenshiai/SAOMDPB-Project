@@ -1,0 +1,23 @@
+.notice-show{
+  font-size: 12px;
+}
+.notice-show .notice-list{
+  font-size: 1.2em;
+}
+.notice-list .notice-list-item{
+  margin-bottom: 10px;
+}
+.notice-button{
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.notice-button:hover{
+  color: #ffc343
+}
+.hidden{
+  display: none;
+}
+.notice-list .notice-change textarea{
+  width: 80%;
+}
