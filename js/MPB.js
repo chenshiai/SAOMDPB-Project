@@ -2,7 +2,7 @@
  * SAOMDPB项目用对象字面量API
  * 作者：丨ConGreat
  * 起始时间：2019-04-23
- * 最后修改时间：2019-05-09
+ * 最后修改时间：2019-05-11
  */
 const MPB = {
   /**
@@ -223,11 +223,29 @@ const MPB = {
         if (res.status > 0) {
           success(res.datas);
         } else {
-          error();
+          error(res.datas);
         }
         complete();
       }
     }
+  },
+  /**
+   * 封装MPB.ajax请求方法，用来做简单的API
+   */
+  "request":function({ url, needSubDomain = false, method='get', data=null }){
+    return new Promise((resolve, reject) => {
+      MPB.ajax({
+        url:url,
+        method:method,
+        data:data,
+        success: function (res) {
+          resolve(res)
+        },
+        error: function (error) {
+          reject(error)
+        }
+      })
+    })
   },
   /**
    * 标签懒加载,将需要添加入html的标签分批加载。
