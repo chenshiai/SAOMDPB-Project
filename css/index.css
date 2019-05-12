@@ -13,17 +13,19 @@ body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend,
   font-family: 'sao_font';
   src: url('../font/sao.woff2');
 }
+
 @font-face {
   font-family: 'sao_icon';
   src: url('../font/elementicon.woff');
 }
-*{
+
+* {
   scroll-behavior: smooth;
 }
+
 body {
-  
   overflow-x: hidden;
-  font-family: 'sao_font','sao_icon', Arial, "微软雅黑";
+  font-family: 'sao_font', 'sao_icon', Arial, "微软雅黑";
   background: rgb(248, 248, 248);
   -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
@@ -61,9 +63,11 @@ table {
 p {
   word-wrap: break-word
 }
+
 input, textarea, select, button, meter, progress {
   /* -webkit-writing-mode: horizontal-tb !important; */
 }
+
 /* 常规居中用 */
 
 .centerBox {
@@ -82,7 +86,7 @@ header, footer, .masks, .section-left {
   position: fixed;
 }
 
-header, footer, .section-left, .loadmore, .select-open ,.section-card{
+header, footer, .section-left, .loadmore, .select-open, .section-card {
   z-index: 99;
   display: block;
   width: 100%;
@@ -92,9 +96,11 @@ header, footer, .section-left, .loadmore, .select-open ,.section-card{
   -moz-box-shadow: 0px 0px 8px 1px #ddd;
   box-shadow: 0px 0px 8px 1px #ddd;
 }
-.boxShadow-no{
+
+.boxShadow-no {
   box-shadow: none;
 }
+
 /* 获取数据前的空白内容填充 */
 
 /* 空白-句 */
@@ -136,15 +142,24 @@ header a {
   letter-spacing: 1px;
 }
 
- header a, footer span, .Notice-title {
+header .logo {
+  width: 32px;
+  vertical-align: top;
+  font-size: 0;
+  line-height: 0;
+}
+
+header a, footer span, .Notice-title {
   text-align: center;
   padding: 10px 0;
   display: block;
 }
-footer span{
+
+footer span {
   font-size: 1.2em;
 }
-header .player_icon{
+
+header .player_icon {
   width: 23px;
   height: 43px;
   margin: 0 auto;
@@ -152,29 +167,31 @@ header .player_icon{
   background-size: 100%;
   animation: player_cursor 3s linear infinite;
 }
-@keyframes player_cursor{
-  0%{
+
+@keyframes player_cursor {
+  0% {
     transform: translateY(0);
   }
-  13%{
+  13% {
     transform: translateY(2px);
   }
-  35%{
+  35% {
     transform: translateY(10px);
   }
-  48%,52%{
+  48%, 52% {
     transform: translateY(12px);
   }
-  65%{
+  65% {
     transform: translateY(10px);
   }
-  87%{
+  87% {
     transform: translateY(2px);
   }
-  100%{
+  100% {
     transform: translateY(0);
   }
 }
+
 /* 留白样式 */
 
 .placeholder-top {
@@ -348,14 +365,16 @@ header .player_icon{
   line-height: 2.5em;
   padding: 7px 20px;
 }
-.weapon  .item-list__span,
-.element .item-list__span{
+
+.weapon .item-list__span, .element .item-list__span {
   line-height: 1.6666em;
   font-size: 24px;
 }
-.weapon  .item-list__span{
-  color:#4f4f4f;
+
+.weapon .item-list__span {
+  color: #4f4f4f;
 }
+
 .item-list__detail .item-list__span {
   cursor: pointer;
   position: relative;
@@ -428,6 +447,7 @@ header .player_icon{
 }
 
 /* svgLoad + masks */
+
 .masks {
   overflow: hidden;
   top: 0;
@@ -446,21 +466,22 @@ header .player_icon{
   height: 100vh;
 }
 
-.mask-svg .lds-message,
-.mask-svg .mask-text {
+.mask-svg .lds-message, .mask-svg .mask-text {
   position: absolute;
   top: calc(50% - 40px);
   left: calc(50% - 40px);
   z-index: 1000;
   transform: scale(1.4);
 }
-.mask-svg .mask-text{
+
+.mask-svg .mask-text {
   color: #fff;
   font-size: 3em;
   top: 40%;
   left: 50%;
   transform: translateX(-50%);
 }
+
 /* 左侧公告样式 */
 
 .Phone-Notice {
@@ -505,14 +526,16 @@ header .player_icon{
   bottom: -20px;
   right: 0;
 }
-.Notice-text__greet a:hover{
+
+.Notice-text__greet a:hover {
   display: inline-block;
-  color:#ffc343;
+  color: #ffc343;
   text-decoration: underline #ffc343;
   animation: fearMid 0.1s infinite linear;
   transform-origin: -30%;
   letter-spacing: 1px;
 }
+
 @-webkit-keyframes noticeHeight {
   0% {
     height: 39px;
@@ -530,6 +553,7 @@ header .player_icon{
     height: auto;
   }
 }
+
 /* 角色卡 */
 
 .rolecard {
@@ -577,6 +601,7 @@ header .player_icon{
     transform: rotate(0deg);
   }
 }
+
 @keyframes fearMid {
   0% {
     transform: rotate(0deg);
@@ -594,6 +619,7 @@ header .player_icon{
     transform: rotate(0deg);
   }
 }
+
 .item-cutin {
   width: 90px;
 }
