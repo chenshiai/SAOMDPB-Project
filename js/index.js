@@ -24,7 +24,12 @@
  * 用于index.html的方法
  */
 function IndexInit() {
-
+  var popup = new MPBpopup('.saopopup-container', {
+    title: 'Message',
+    text: '哎呀，什么也没找到呢<p>检查一下检索条件吧(^_^)</p>',
+    okFunc: () => { popup.hiddenPopup() },
+    oneKey: true
+  })
   // 事件代理，点击切换内容
   var selectlListItem = $(".select-list__item");
   for (item of selectlListItem) {
@@ -120,12 +125,7 @@ function IndexInit() {
       Mask.loadoverMask('#ffc343');
     }, 500);
   }
-  var popup = new MPBpopup('.saopopup-container', {
-    title: 'Message',
-    text: '哎呀，什么也没找到呢<p>检查一下检索条件吧(^_^)</p>',
-    okFunc: () => { popup.hiddenPopup() },
-    oneKey: true
-  })
+  
   function requestError() {
     Mask.loadoverMask('#ffc343');
     setTimeout(function () {
@@ -191,11 +191,19 @@ function IndexInit() {
       $(this).attr('src', newRoles[i].src);
       i++;
     });
-    NoticeInit();
+    MPB.ajax({
+      url:'/notice/get',
+      method:'get',
+      success:NoticeInit,
+      error:()=>{
+        popup.showPopup({
+          text:"公告信息获取失败！"
+        })
+      }
+    })
   }
-  var scripts = ["https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"];
   MPB.load({
-    urls: scripts,
+    urls: ["https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"],
     callback: swiperinit
   })
 
@@ -260,14 +268,22 @@ function IndexInit() {
   })
 
   // 公告内容初始化
-  function NoticeInit() {
-
-    var NoticeGreet = document.querySelectorAll('.Notice-text__greet');
-    var i = 0;
+  function NoticeInit(data) {
+    let NoticeText = document.getElementsByClassName('Notice-text')[0];
+    NoticeText.innerHTML = `
+    <div class="Notice-text__greet">
+      <span>${data.text}</span>
+      <div class='greet-time'>${data.time}</div>
+    </div>
+    `;
     BasicConfig.Notice.forEach((val) => {
-      var inner = `<span>${val.title}</span><p><a href='${val.href}' target='_blank'>${val.p}</a></p><div class='greet-time'>${val.time}</div>`;
-      NoticeGreet[i].innerHTML = inner;
-      i++;
+      NoticeText.innerHTML += `
+    <div class="Notice-text__greet">
+      <span>${val.text}</span>
+      <p><a href='${val.href}' target='_blank'>${val.p}</a></p>
+      <div class='greet-time'>${val.time}</div>
+    </div>
+    `;
     });
 
   }
