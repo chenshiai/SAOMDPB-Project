@@ -1,12 +1,6 @@
 ﻿const BasicConfig = {
   Notice: [
     {
-      title: "站点更新期间，新池立绘可能没那么快上传。可能要节后了···",
-      href:"",
-      p:"",
-      time: "2019-04-30"
-    },
-    {
       title: "Q&A",
       href:"",
       p:"关于本站",
