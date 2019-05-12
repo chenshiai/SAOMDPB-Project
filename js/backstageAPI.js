@@ -71,7 +71,10 @@ const notice = {
     if(backstageAPI.updateNotice(data)!=[]){
       backstagePopup.showPopup({
         text:"提交成功！"
-      })
+      });
+      notice.cancle(id);
+      document.getElementsByClassName('notice-list')[0].innerHTML = '';
+      addNotice();
     }
   },
   cancle:function(id){
@@ -87,7 +90,9 @@ const notice = {
       if(backstageAPI.addNotice(`title=${title}&time=${time}&text=${text}`)){
         backstagePopup.showPopup({
           text:`新加公告成功！<br>TITLE:${title}<br>TIME:${time}<br>TEXT:${text}<br>`
-        })
+        });
+        document.getElementsByClassName('notice-list')[0].innerHTML = '';
+        addNotice();
       }
     }else{
       backstagePopup.showPopup({
