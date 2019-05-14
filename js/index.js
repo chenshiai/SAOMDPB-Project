@@ -272,14 +272,14 @@ function IndexInit() {
     let NoticeText = document.getElementsByClassName('Notice-text')[0];
     NoticeText.innerHTML = `
     <div class="Notice-text__greet">
-      <span>${data.text}</span>
-      <div class='greet-time'>${data.time}</div>
+      <span>${data[0].text}</span>
+      <div class='greet-time'>${data[0].time}</div>
     </div>
     `;
     BasicConfig.Notice.forEach((val) => {
       NoticeText.innerHTML += `
     <div class="Notice-text__greet">
-      <span>${val.text}</span>
+      <span>${val.title}</span>
       <p><a href='${val.href}' target='_blank'>${val.p}</a></p>
       <div class='greet-time'>${val.time}</div>
     </div>

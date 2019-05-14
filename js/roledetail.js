@@ -14,7 +14,7 @@
     okFunc: () => {
       window.location.href = "/";
     },
-    oneKey:true
+    oneKey: true
   })
   function getError() {
     popup.showPopup();
@@ -27,14 +27,14 @@
     alldata = res.data[0];
     setRoleInfo(alldata);
     setRolePanel(alldata);
-    $('.role-design').click(function(){
+    $('.role-design').click(function () {
       setRoleDesign(alldata);
     });
     getRoleSp(alldata.sp);
   }
   function setRoleInfo(data) {
     var roleInfoCutin = document.getElementsByClassName('cutin-img');
-    roleInfoCutin[0].querySelector('img').setAttribute('src', `http://saoimages.oss-cn-shenzhen.aliyuncs.com/saoImage/${data.cutin}.gif`);
+    roleInfoCutin[0].querySelector('img').setAttribute('src', `../images/cutin/${data.cutin}.gif`);
 
     var ele = document.getElementsByClassName('ele');
     ele[0].innerHTML = `<img src='../images/icon/Element/icon_attribute_${data.element}.png' alt=''/>`;
@@ -92,10 +92,10 @@
     var itemImg = document.getElementsByClassName('item-img');
     var links = document.getElementsByClassName('role-design__links');
     if (data.rare == 3 || (data.rare == 2 && data.up == 1)) {
-      itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/r6/${data.cutin}.jpg`);
+      itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/${data.cutin}.jpg`);
       var i = 1;
       for (; i < itemImg.length; i++) {
-        itemImg[i].querySelector('img').setAttribute('src', `../images/pictureL/r6/${data.cutin}_${i}.jpg`);
+        itemImg[i].querySelector('img').setAttribute('src', `../images/pictureL/${data.cutin}_${i}.jpg`);
       }
     } else {
       itemImg[0].querySelector('img').setAttribute('src', `../images/pictureL/${data.cutin}.jpg`);
@@ -234,7 +234,7 @@
     var cardsCutin = document.getElementsByClassName('cards-cutin')[0];
     for (var item of cardrole) {
       var img = document.createElement('img');
-      img.setAttribute('src', `http://saoimages.oss-cn-shenzhen.aliyuncs.com/saoImage/${item.cutin}.gif`);
+      img.setAttribute('src', `../images/cutin/${item.cutin}.gif`);
       img.setAttribute('onclick', `goto('/roles/${item.id}')`);
       cardsCutin.append(img);
     }
@@ -329,7 +329,7 @@
       theNode.classList.remove('card-animate');
     }
   }
-  new MPB.ScrollTrigger(100,cardFixedFunc.after,cardFixedFunc.before);
+  new MPB.ScrollTrigger(100, cardFixedFunc.after, cardFixedFunc.before);
 
   // 公告点击展开按钮
   var nwit = 1;
@@ -346,16 +346,34 @@
       nwit = 1;
     }
   })
-  NoticeInit();
+  MPB.ajax({
+    url:'/notice/get',
+    method:'get',
+    success:NoticeInit,
+    error:()=>{
+      popup.showPopup({
+        text:"公告信息获取失败！"
+      })
+    }
+  })
   // 公告内容初始化
-  function NoticeInit() {
-
-    var NoticeGreet = document.querySelectorAll('.Notice-text__greet');
-    var i = 0;
+  function NoticeInit(data) {
+    let NoticeText = document.getElementsByClassName('Notice-text')[0];
+    NoticeText.innerHTML = `
+    <div class="Notice-text__greet">
+      <span>${data[0].text}</span>
+      <div class='greet-time'>${data[0].time}</div>
+    </div>
+    `;
     BasicConfig.Notice.forEach((val) => {
-      var inner = `<span>${val.title}</span><p><a href='${val.href}' target='_blank'>${val.p}</a></p><div class='greet-time'>${val.time}</div>`;
-      NoticeGreet[i].innerHTML = inner;
-      i++;
+      NoticeText.innerHTML += `
+    <div class="Notice-text__greet">
+      <span>${val.title}</span>
+      <p><a href='${val.href}' target='_blank'>${val.p}</a></p>
+      <div class='greet-time'>${val.time}</div>
+    </div>
+    `;
     });
+
   }
 }
