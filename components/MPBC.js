@@ -60,9 +60,11 @@ function MPBpopup(theNode, json) {
   _node.classList.add('saopopup-close');
   _node.getElementsByClassName('saopopup-button-no')[0].onclick = function () {
     _content.noFunc();
+    _content.noFunc = ()=>{};
   }
   _node.getElementsByClassName('saopopup-button-ok')[0].onclick = function () {
     _content.okFunc();
+    _content.okFunc = ()=>{};
   }
   _node.style.width = '0px';
 
@@ -83,9 +85,13 @@ function MPBpopup(theNode, json) {
   function _showButton(){
     if(!_content.showOk){
       _node.getElementsByClassName('saopopup-button-ok')[0].style.display = 'none';
+    }else{
+      _node.getElementsByClassName('saopopup-button-ok')[0].style.display = 'inline-block';
     }
     if(!_content.showNo){
       _node.getElementsByClassName('saopopup-button-no')[0].style.display = 'none';
+    }else{
+      _node.getElementsByClassName('saopopup-button-no')[0].style.display = 'inline-block';
     }
     if (_content.oneKey) {
       _node.getElementsByClassName('saopopup-button-no')[0].style.display = 'none';
