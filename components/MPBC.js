@@ -39,11 +39,11 @@ function MPBpopup(theNode, json) {
       if (json.title) _content.title = json.title;
       if (json.text) _content.text = json.text;
       if (json.mode) _content.mode = json.mode;
-      if (json.okFunc) _content.okFunc = json.okFunc;
-      if (json.noFunc) _content.noFunc = json.noFunc;
+      if (json.okFunc) _content.okFunc = json.okFunc; else () => { };
+      if (json.noFunc) _content.noFunc = json.noFunc; else () => { this.hiddenPopup() };
       if (!json.showOk) _content.showOk = json.showOk;
       if (!json.showNo) _content.showNo = json.showNo;
-      if (json.oneKey) _content.oneKey = json.oneKey;
+      if (json.oneKey!=null || json.oneKey!=undefined && typeof json.oneKey === 'boolean') _content.oneKey = json.oneKey;
       if (json.width) _content.width = json.width;
     } else {
       return;
@@ -60,11 +60,9 @@ function MPBpopup(theNode, json) {
   _node.classList.add('saopopup-close');
   _node.getElementsByClassName('saopopup-button-no')[0].onclick = function () {
     _content.noFunc();
-    _content.noFunc = ()=>{};
   }
   _node.getElementsByClassName('saopopup-button-ok')[0].onclick = function () {
     _content.okFunc();
-    _content.okFunc = ()=>{};
   }
   _node.style.width = '0px';
 

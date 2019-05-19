@@ -124,7 +124,7 @@ const MPB = {
       return this.queue[this.queue.length - 1];
     }
     //打印队列
-    this.toString = function() {
+    this.toString = function () {
       var retStr = "";
       for (var i = 0; i < this.queue.length; ++i) {
         retStr += this.queue[i] + " "
@@ -132,7 +132,7 @@ const MPB = {
       return retStr;
     }
     //判断队列是否为空
-    this.isEmpty = function() {
+    this.isEmpty = function () {
       if (this.queue.length == 0) {
         return true;
       } else {
@@ -140,7 +140,7 @@ const MPB = {
       }
     }
     //返回队列中元素的个数
-    this.count = function() {
+    this.count = function () {
       return this.queue.length;
     }
   },
@@ -200,7 +200,6 @@ const MPB = {
     xhr.setRequestHeader("Content-type", contentType);
     beforeSend();
     xhr.send(data);
-
     var timer = setTimeout(function () {
       xhr.abort();
       timeoutTodo();
@@ -232,18 +231,21 @@ const MPB = {
   /**
    * 封装MPB.ajax请求方法，用来做简单的API
    */
-  "request":function({ url, needSubDomain = false, method='get', data=null }){
+  "request": function ({
+    url,
+    needSubDomain = false,
+    method = 'get',
+    data = null,
+    success = function () { },
+    error = function () { }
+  }) {
     return new Promise((resolve, reject) => {
       MPB.ajax({
-        url:url,
-        method:method,
-        data:data,
-        success: function (res) {
-          resolve(res)
-        },
-        error: function (error) {
-          reject(error)
-        }
+        url: url,
+        method: method,
+        data: data,
+        success: function (res) { success(res); resolve(res) },
+        error: function (res) { error(res); reject(res) }
       })
     })
   },

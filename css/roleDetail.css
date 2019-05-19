@@ -173,7 +173,8 @@
 }
 
 .item-img img {
-  height: 678px;
+  /* height: 678px;*/
+  width:100%;
 }
 
 .item-img input {
