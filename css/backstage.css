@@ -1,10 +1,10 @@
 .notice-show{
   font-size: 12px;
 }
-.notice-show .notice-list{
+.show{
   font-size: 1.2em;
 }
-.notice-list .notice-list-item{
+.notice-list .list-item{
   margin-bottom: 10px;
 }
 .notice-button{
@@ -20,4 +20,11 @@
 }
 .notice-list .notice-change textarea{
   width: 80%;
+}
+.role-list{
+  display: flex;
+}
+.role-list li{
+  flex: 1;
+  display: inline-block
 }

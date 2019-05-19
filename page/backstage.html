@@ -70,7 +70,7 @@
         <span>公告相关</span>
       </div>
       <section class="section-card">
-        <div class="notice-show">
+        <div class="notice-show show">
           <span class="card-title">公告</span>
           <span class=" notice-button" onclick="notice.add()">新增公告</span>
           <div class="notice-add">
@@ -87,6 +87,7 @@
         <span>角色相关</span>
       </div>
       <section class="section-card">
+        <div class="role-show show">
           <span class="card-title">角色</span>
           <span class="notice-button" onclick="role.add()">新增角色</span>
           <div class="role-add">
@@ -98,6 +99,10 @@
               <option value="1">四星</option>
               <option value="2">五星</option>
               <option value="3">六星</option>
+            </select>
+            <select name="sex" id="sex">
+              <option value="1">男</option>
+              <option value="2">女</option>
             </select>
             <select name="weapon" id="weapon">
               <option value="1">单手剑</option>
@@ -125,6 +130,8 @@
           </div>
           <ul class="role-list">
           </ul>
+        </div>
+
       </section>
     </div>
 
@@ -198,6 +205,7 @@
   <script src="../components/MPBC.js?t=290419"></script>
   <script src="../js/index.js"></script>
   <script src="../js/backstageAPI.js"></script>
+  <script src="../js/backstage.js"></script>
   <script>
     $(document).ready(function () {
       backstageInit();
