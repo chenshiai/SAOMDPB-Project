@@ -17,6 +17,8 @@
     oneKey: true
   })
   function getError() {
+  console.log('请求失败')
+
     popup.showPopup();
   }
   // 该页面全局变量，存储当前页面角色的信息
@@ -267,6 +269,16 @@
       allreply.insertBefore(content, allreply.childNodes[0]);
     }
     document.getElementsByClassName('now-num')[0].innerHTML = replynum;
+    MPB.ajax({
+      url:'/notice/get',
+      method:'get',
+      success:NoticeInit,
+      error:()=>{
+        popup.showPopup({
+          text:"公告信息获取失败！"
+        })
+      }
+    })
   }
 
   // 发表评论
@@ -346,16 +358,7 @@
       nwit = 1;
     }
   })
-  MPB.ajax({
-    url:'/notice/get',
-    method:'get',
-    success:NoticeInit,
-    error:()=>{
-      popup.showPopup({
-        text:"公告信息获取失败！"
-      })
-    }
-  })
+  
   // 公告内容初始化
   function NoticeInit(data) {
     let NoticeText = document.getElementsByClassName('Notice-text')[0];
