@@ -15,6 +15,9 @@ const MPB = {
     ajax: null,
     scrollTop: 0
   },
+  "error":function(msg){
+    throw new Error(msg);
+  },
   /**
    * 只需一次调用就可获得兼容的XMLHttpRequest对象~
    */
@@ -63,10 +66,10 @@ const MPB = {
       }
     }
     if (typeof _abort != "function") {
-      throw new Error("计时器对象Timer(function, number)中的function参数类型错误！");
+      MPB.error("计时器对象Timer(function, number)中的function参数类型错误！");
     }
     if (typeof _time != "number") {
-      throw new Error("计时器对象Timer(function, number)中的number参数类型错误！");
+      MPB.error("计时器对象Timer(function, number)中的number参数类型错误！");
     }
 
     /**
@@ -179,7 +182,7 @@ const MPB = {
    */
   "ajax": function ({
     method = "get",
-    url = function () { throw new Error('地址都不给人家！') },
+    url = MPB.error('地址都不给人家！'),
     data = null,
     contentType = "application/x-www-form-urlencoded",
     dataType = "",// 尚未实现.....
@@ -187,8 +190,8 @@ const MPB = {
     cache = true,
     timeout = 60000,
     beforeSend = function () { },
-    success = function () { console.log('给我一个成功回调函数嘛！') },
-    error = function () { console.log("服务器返回错误！") },
+    success = MPB.error('给我一个成功回调函数嘛！'),
+    error = MPB.error("服务器返回错误！"),
     complete = function () { },
     timeoutTodo = function () { }
   }) {
@@ -296,7 +299,7 @@ const MPB = {
    * @param {boolean} async 是否异步加载，默认true。
    */
   "load": function ({
-    urls = function () { throw new Error('必须传入一个存地址的数组才行哦！') },
+    urls = MPB.error('必须传入一个存地址的数组才行哦！'),
     type = "script",
     tagname = "head",
     callback = function () { },
