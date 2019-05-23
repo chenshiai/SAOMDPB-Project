@@ -2,7 +2,7 @@
  * SAOMDPB项目用对象字面量API  
  * 作者：丨ConGreat  
  * 起始时间：2019-04-23  
- * 最后修改时间：2019-05-11  
+ * 最后修改时间：2019-05-23
  */
 const MPB = {
   /**
@@ -15,13 +15,13 @@ const MPB = {
     ajax: null,
     scrollTop: 0
   },
-  "error":function(msg){
+  "error": function (msg) {
     throw new Error(msg);
   },
   /**
    * 只需一次调用就可获得兼容的XMLHttpRequest对象~
    */
-  "XMLHttpRequest": function (bool) {
+  "HTTP": function (bool) {
     if (MPB.Object.xhr === null) {
       var xhr = null;
       if (window.XMLHttpRequest) {
@@ -34,7 +34,6 @@ const MPB = {
     return MPB.Object.xhr;
   },
   /**
-   * BANED  
    * 创建一个计时器队列对象。可以用来做防抖,但不是为了防抖而做的。
    * @function open(bool) 调用一次该计时器，参数bool默认false，所有计时器同步执行，
    * true则进行一次异步调用。
@@ -198,7 +197,7 @@ const MPB = {
     if (typeof url === "function") {
       url();
     }
-    var xhr = MPB.XMLHttpRequest();
+    var xhr = MPB.HTTP();
     xhr.open(method, url, async);
     xhr.setRequestHeader("Content-type", contentType);
     beforeSend();
@@ -255,11 +254,12 @@ const MPB = {
   /**
    * 标签懒加载,将需要添加入html的标签分批加载。
    * @param {array} data json对象数组。
-   * @param {number} num 你希望每批加载多少。
+   * @param {function} every 数据处理方法
+   * @param {function} complete 所有数据处理完后执行的方法（可选）
    */
-  "Taglazyload": function (data, callback, complete) {
+  "Taglazyload": function (data, every, complete) {
     var _data = [...data],
-      _callback = callback,
+      _callback = every,
       _complete = complete || function () { };
 
     /**
@@ -426,6 +426,46 @@ const MPB = {
       if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
     }
     return "";
+  },
+  /**
+   * 分页器
+   * @param {Array} arr 需要分页的数据
+   * @param {number} size 数量
+   * @param {boolean} pages 默认false 每页多少，true 固定多少页
+   */
+  "paging": function (arr, size, pages) {
+    if (pages) {
+      let length = arr.length / size;
+      return Array.from({
+        length: size
+      }, (v, i) => arr.slice(i * length, i * length + length))
+    } else {
+      return Array.from({
+        length: Math.ceil(arr.length / size)
+      }, (v, i) => arr.slice(i * size, i * size + size))
+    }
+  },
+  /**
+   * 二分查找（仅限有序数组）返回下标  
+   * 项目组暂未使用，当作笔记记录以下
+   * @param {Array} arr 
+   * @param {any} data 
+   */
+  "binarySearch": function (arr, data) {
+    let min = 0, max = arr.length - 1, mid;
+    while (min <= max) {
+      // mid = parseInt((min + max) / 2);
+      // mid = min + parseInt((max - min) / 2);
+      mid = min + ((max - min) >> 1);
+      if (arr[mid] > data) {
+        max = mid - 1;
+      } else if (arr[mid] < data) {
+        min = mid + 1;
+      } else {
+        return mid
+      }
+    }
+    return -1;
   }
 }
 const Scroll = {
@@ -500,3 +540,30 @@ const Scroll = {
     window.addEventListener('scroll', trigger);
   }
 }
+
+const a = [
+  {
+    id:1
+  },
+  {
+    id:4
+  },
+  {
+    id:2
+  },
+  {
+    id:3
+  },
+  {
+    id:5
+  },
+  {
+    id:7
+  },
+  {
+    id:6
+  },
+  {
+    id:8
+  }
+]
