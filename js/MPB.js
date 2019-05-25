@@ -2,7 +2,7 @@
  * SAOMDPB项目用对象字面量API  
  * 作者：丨ConGreat  
  * 起始时间：2019-04-23  
- * 最后修改时间：2019-05-23
+ * 最后修改时间：2019-05-25
  */
 const MPB = {
   /**
@@ -540,3 +540,44 @@ const Scroll = {
     window.addEventListener('scroll', trigger);
   }
 }
+const Mask = {
+  // 操作页面上的mask
+  "loadoverMask": function (color) {
+    if (document.querySelector('.masks')) {
+      var theMask = document.getElementById('masks');
+      theMask.style.backgroundColor = color;
+      theMask.style.height = "0";
+    } else {
+      console.log('在页面上没有找到mask组件！')
+    }
+  },
+  "loadingMask": function (color) {
+    if (document.querySelector('.masks')) {
+      var theMask = document.getElementById('masks');
+      theMask.style.backgroundColor = color;
+      theMask.style.height = "100%";
+    } else {
+      console.log('在页面上没有找到mask组件！')
+    }
+  }
+}
+// 下面这个是自定义的，不公开
+// 全局函数-跳转重定向
+function goto(str) {
+  Mask.loadingMask("#ffc343");
+  setTimeout(() => {
+    window.location.href = str;
+  }, 500);
+}
+// 回滚顶部
+document.querySelector('.goTop').onclick = function () {
+  window.scrollTo(0, 0);
+};
+var goTop = new MPB.ScrollTrigger(500,
+  function () {
+    document.querySelector('.goTop').style.display = "block";
+  },
+  function () {
+    document.querySelector('.goTop').style.display = "none";
+  }
+);

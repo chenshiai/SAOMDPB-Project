@@ -1,25 +1,4 @@
-﻿const Mask = {
-  // 操作页面上的mask
-  "loadoverMask": function (color) {
-    if (document.querySelector('.masks')) {
-      var theMask = document.getElementById('masks');
-      theMask.style.backgroundColor = color;
-      theMask.style.height = "0";
-    } else {
-      console.log('在页面上没有找到mask组件！')
-    }
-  },
-  "loadingMask": function (color) {
-    if (document.querySelector('.masks')) {
-      var theMask = document.getElementById('masks');
-      theMask.style.backgroundColor = color;
-      theMask.style.height = "100%";
-    } else {
-      console.log('在页面上没有找到mask组件！')
-    }
-  }
-}
-
+﻿
 /**
  * 用于index.html的方法
  */
@@ -290,23 +269,3 @@ function IndexInit() {
   console.log('初始化完成');
   Mask.loadoverMask('#ffc343');
 }
-
-// 全局函数-跳转重定向
-function goto(str) {
-  Mask.loadingMask("#ffc343");
-  setTimeout(() => {
-    window.location.href = str;
-  }, 500);
-}
-// 回滚顶部
-$('.goTop').click(function () {
-  window.scrollTo(0, 0);
-});
-var goTop = new MPB.ScrollTrigger(500,
-  function () {
-    document.querySelector('.goTop').style.display = "block";
-  },
-  function () {
-    document.querySelector('.goTop').style.display = "none";
-  }
-);
