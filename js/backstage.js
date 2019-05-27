@@ -119,14 +119,14 @@ const notice = {
     let thisNode = notice.getNoticeItem(id);
     let text = thisNode.getElementsByTagName('textarea')[0].value;
     let data = `id=${id}&text=${text}`;
-    backstageAPI.updateNotice(data).then(() => {
+    backstageAPI.updateNotice(data).then((res) => {
       backstagePopup.showPopup({
         text: "提交成功！"
       });
       notice.cancle(id);
       document.getElementsByClassName('notice-list')[0].innerHTML = '';
-      addNotice();
-    }).catch(() => {
+      backstageAPI.getNotice()
+    }).catch((res) => {
       backstagePopup.showPopup({
         text: "提交失败！",
         oneKey: true,
