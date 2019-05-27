@@ -20,7 +20,7 @@ function MPBpopup(theNode, json) {
     title: "Message",
     text: "Nothing in here",
     mode:'confirm',
-    okFunc: () => { },
+    okFunc: () => { this.hiddenPopup() },
     noFunc: () => { this.hiddenPopup() },
 
     showOk:true,
@@ -36,15 +36,15 @@ function MPBpopup(theNode, json) {
   // 设置组件属性，用于数据合法性判断
   function _setData(json) {
     if (json) {
-      if (json.title) _content.title = json.title;
-      if (json.text) _content.text = json.text;
-      if (json.mode) _content.mode = json.mode;
-      if (json.okFunc) _content.okFunc = json.okFunc; else () => { };
-      if (json.noFunc) _content.noFunc = json.noFunc; else () => { this.hiddenPopup() };
-      if (!json.showOk) _content.showOk = json.showOk;
-      if (!json.showNo) _content.showNo = json.showNo;
+      _content.title = json.title || _content.title;
+      _content.text = json.text || _content.text;
+      _content.mode = json.mode || _content.mode;
+      _content.okFunc = json.okFunc || function(){ self.hiddenPopup() };
+      _content.noFunc = json.noFunc || function(){ self.hiddenPopup() };
+      _content.showOk = json.showOk || _content.showOk;
+      _content.showNo = json.showNo || _content.showNo;
       if (json.oneKey!=null || json.oneKey!=undefined && typeof json.oneKey === 'boolean') _content.oneKey = json.oneKey;
-      if (json.width) _content.width = json.width;
+      _content.width = json.width || _content.width;
     } else {
       return;
     }
