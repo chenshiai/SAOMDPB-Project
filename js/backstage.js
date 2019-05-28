@@ -1,12 +1,91 @@
-function backstageInit() {
-  backstageAPI.getNotice()
-  .then(backstageAPI.getRole);
-}
 // 该页面的全局弹窗对象
 var backstagePopup = new MPBpopup('.saopopup-container', {
   okFunc: () => { backstagePopup.hiddenPopup() },
   oneKey: true
 })
+
+function backstageInit() {
+  let notice = new Vue({
+    el: '#notice',
+    data() {
+      return {
+        noticeList: [],
+        hidden: false,
+        now: {
+          id: '',
+          text: ''
+        },
+        newNotice:{
+          title:'',
+          text:'',
+          time:''
+        }
+      }
+    },
+    methods: {
+      setNoticeList: function (list) {
+        this.noticeList = list;
+      },
+      add:function(){
+        if (this.newNotice.title && this.newNotice.time && this.newNotice.text) {
+          let data = `title=${this.newNotice.title}&time=${this.newNotice.time}&text=${this.newNotice.text}`;
+          backstageAPI.addNotice(data).then(() => {
+            backstagePopup.showPopup({
+              text: `新加公告成功！<br>TITLE:${this.newNotice.title}<br>TIME:${this.newNotice.time}<br>TEXT:${this.newNotice.text}<br>`
+            });
+            backstageAPI.getNotice(this.setNoticeList);
+            this.newNotice = {
+              title:'',
+              text:'',
+              time:''
+            }
+          })
+        } else {
+          backstagePopup.showPopup({
+            text: "信息未填写完。"
+          })
+        }
+      },
+      update: function (e) {
+        let el = e.target.parentElement;
+        this.now.text = el.querySelector('.notice-text').getElementsByTagName('span')[0].innerHTML;
+        this.now.id = e.target.id;
+        this.hidden = true;
+      },
+      remove: function (e) {
+        let id = e.target.id;
+        let index = e.target.index;
+        let self = this;
+        backstagePopup.showPopup({
+          text: "即将删除该条公告<br/>确认删除吗？",
+          oneKey: false,
+          okFunc: removeNode
+        })
+        function removeNode() {
+          backstageAPI.deleteNotice(`id=${id}`).then(() => {
+            backstagePopup.showPopup({
+              text: "删除成功！",
+              oneKey: true,
+              okFunc: () => { backstagePopup.hiddenPopup() }
+            });
+          self.noticeList.splice(index,1);
+          }).catch(() => {
+            backstagePopup.showPopup({
+              text: "删除失败！",
+              oneKey: true,
+              okFunc: () => { backstagePopup.hiddenPopup() }
+            });
+          });
+        }
+      },
+      submit: function () { console.log("点击提交") },
+      cancle: function () { this.hidden = false }
+    }
+  })
+  backstageAPI.getNotice(notice.setNoticeList)
+    .then(backstageAPI.getRole);
+}
+
 // 插入 li的模板
 const template = {
   // 公告li模板
@@ -73,7 +152,7 @@ function setList(data) {
     var roleList = document.getElementsByClassName('role-list')[0];
     let i = 0;
     for (let item of data.data) {
-      if(i>4) break;
+      if (i > 4) break;
       roleList.innerHTML += template.role(item);
       i++;
     }
