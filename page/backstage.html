@@ -11,8 +11,7 @@
   <link rel="stylesheet" href="../css/roleDetail.css">
   <link rel="stylesheet" href="../components/MPBC.css?t=290419">
   <link rel="stylesheet" href="../css/backstage.css">
-  <script src="../js/MPB.js?t=290419"></script>
-  <script src="../JSON/BasicConfig.js?t=290419"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 </head>
 
 <body>
@@ -70,15 +69,34 @@
         <span>公告相关</span>
       </div>
       <section class="section-card">
-        <div class="notice-show show">
+        <div class="notice-show show" id="notice">
           <span class="card-title">公告</span>
-          <span class=" notice-button" onclick="notice.add()">新增公告</span>
+          <span class=" notice-button" v-on:click="add">新增公告</span>
+
           <div class="notice-add">
-            <input type="text" name="title" value="" placeholder="这里写标题(不可见)" />
-            <input type="text" name="time" value="" placeholder="时间格式(YYYY-MM-DD)" />
-            <input type="text" name="text" value="" placeholder="这里写内容" style="width:50%" />
+            <input type="text" name="title" v-model="newNotice.title" placeholder="这里写标题(不可见)" />
+            <input type="text" name="time" v-model="newNotice.time" placeholder="时间格式(YYYY-MM-DD)" />
+            <input type="text" name="text" v-model="newNotice.text" placeholder="这里写内容" style="width:50%" />
+          </div>
+          <div class="notice-change" v-if="hidden">
+            <textarea type="text" id="notice-textarea">{{now.text}}</textarea>
+            <span class="notice-submit notice-button" v-on:click="submit" v-bind:id="now.id">提交</span>
+            <span class="notice-cancle notice-button" v-on:click="cancle">取消</span>
           </div>
           <ul class="notice-list">
+            <li class="notice-list-item list-item" v-for="(item,index) in noticeList">
+              <div class="notice-id">
+                编号：<span>{{item.id}}</span>
+              </div>
+              <div class="notice-text">
+                内容：<span>{{item.text}}</span>
+              </div>
+              <div class="notice-time">
+                时间：<span>{{item.time}}</span>
+              </div>
+              <span class="notice-update notice-button" v-on:click="update" v-bind:id="item.id">编辑</span>
+              <span class="notice-delete notice-button" v-on:click="remove" v-bind:id="item.id" v-bind:index="index">删除</span>
+            </li>
           </ul>
         </div>
       </section>
@@ -144,6 +162,12 @@
       </div>
     </footer>
   </div>
+  <!-- 返回顶部按钮 -->
+  <div class="goTop">
+    <svg width="50" height="50" class="goTopSvg" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 35 L25 18 L45 35 "></path>
+    </svg>
+  </div>
   <!-- 弹窗 -->
   <div class="saopopup-container">
     <div class="saopopup-frame">
@@ -203,7 +227,8 @@
   </div>
   <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
   <script src="../components/MPBC.js?t=290419"></script>
-  <script src="../js/index.js"></script>
+  <script src="../js/MPB.js?t=290419"></script>
+  <script src="../JSON/BasicConfig.js?t=290419"></script>
   <script src="../js/backstageAPI.js"></script>
   <script src="../js/backstage.js"></script>
   <script>
