@@ -3,11 +3,11 @@
 // const API_BASE_URL = 'http://saomdpb.com'
 const API_BASE_URL = ''
 const backstageAPI = {
-  getNotice: () => {
+  getNotice: (callback) => {
     return MPB.request({
       url: '/notice/get',
       method: 'get',
-      success: setList
+      success: callback
     })
   },
   updateNotice: (data) => {
