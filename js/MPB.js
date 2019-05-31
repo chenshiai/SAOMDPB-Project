@@ -146,25 +146,62 @@ const MPB = {
       return this.queue.length;
     }
   },
-  /**
-   * 防抖处理，用着方法包住想要防抖的方法
-   * @param {function} abort 需要调用的函数 
-   * @param {number} time 设置抖动时间
-   */
-  "Processor": function (abort, time) {
-    this.timeoutId = null; // 相当于延时setTimeout的一个标记，方便清除的时候使用
-    this.time = time || 100;
-    this.abort = abort || function () { };
-    let self = this;
-
-    // 初始处理调用的方法
-    // 在实际需要触发的代码外面包一层延时clearTimeout方法，以便控制连续触发带来的无用调用
-    this.process = function () {
-      clearTimeout(self.timeoutId); // 先清除之前的延时，并在下面重新开始计算时间
-      self.timeoutId = setTimeout(function () {
-        self.abort();
-      }, self.time) // 如果还没有执行就又被触发，会根据上面的clearTimeout来清除并重新开始计算
+  "debounce": function (
+    abort = MPB.error('使用debounce，至少传入一个方法'),
+    time = 100,
+    options = { leading: true, trailing: true, context: null }) {
+    var timer = null;
+    var process = function (...args) {
+      if (timer) { clearTimeout(timer) }
+      if (options.leading && !timer) {
+        timer = setTimeout(null, time);
+        abort.apply(options.context, args)
+      } else if (options.trailing) {
+        timer = setTimeout(() => {
+          abort.apply(options.context, args);
+          timer = null;
+        }, time)
+      }
     }
+    process.cancel = function () {
+      clearTimeout(timer);
+      timer = null;
+    }
+    return process;
+  },
+  "throttle": function (func, wait = 50) {
+    var timer = null
+    var throttle = function (...args) {
+      if (!timer) {
+        func.apply(this, args)
+        timer = setTimeout(function () {
+          clearTimeout(timer)
+          timer = null
+        }, wait)
+      }
+    }
+    throttle.cancel = function () {
+      clearTimeout(timer)
+      timer = null
+    }
+    return throttle
+  },
+  "isJSON": function (str) {
+    if (typeof str === 'string') {
+      try {
+        var obj = JSON.parse(str);
+        if (typeof obj === 'object' && obj) {
+          return true;
+        } else {
+          return false;
+        }
+
+      } catch (e) {
+        console.log('error：' + str + '!!!' + e);
+        return false;
+      }
+    }
+    console.log('It is not a string!')
   },
   /**
    * ajax请求方法，服务器返回的要是json！
@@ -191,20 +228,21 @@ const MPB = {
     beforeSend = function () { },
     success = MPB.error('给我一个成功回调函数嘛！'),
     error = MPB.error("服务器返回错误！"),
-    complete = function () { },
-    timeoutTodo = function () { }
+    complete = function () { }
   }) {
-    if (typeof url === "function") {
-      url();
-    }
     var xhr = MPB.HTTP();
+
     xhr.open(method, url, async);
     xhr.setRequestHeader("Content-type", contentType);
+    if (contentType === 'application/json') {
+      var data = JSON.stringify(data);
+      MPB.isJSON(data) ? true : MPB.error('数据传输格式错误！');
+    }
     beforeSend();
     xhr.send(data);
     var timer = setTimeout(function () {
       xhr.abort();
-      timeoutTodo();
+      error();
     }, timeout)//设置计时器
 
     xhr.onreadystatechange = function () {
@@ -213,18 +251,19 @@ const MPB = {
         var responseText = xhr.responseText;//返回结果
         var res = JSON.parse(responseText);//回调函数
         /**
-         * 返回结果模板
+         * 后端返回的结果模板
          * res:{
          *  status:number,
          *  datas:{
          *    ...你的数据
          *  }
          * }
+         * 这里适应了PB项目的后端，原版只传res
          */
         if (res.status > 0) {
           success(res.datas);
         } else {
-          error(res.datas);
+          error();
         }
         complete();
       }
@@ -383,7 +422,7 @@ const MPB = {
         _before();
       }
     }
-    Scroll.windowScroll(new MPB.Processor(_trigger, 100).process);
+    Scroll.windowScroll(MPB.debounce(_trigger, 100));
   },
   /**
    * 来自张鑫旭老师的缓动小算法
