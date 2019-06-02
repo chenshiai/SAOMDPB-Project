@@ -5,6 +5,7 @@ var backstagePopup = new MPBpopup('.saopopup-container', {
 })
 
 function backstageInit() {
+  // 公告部分交互
   let notice = new Vue({
     el: '#notice',
     data() {
@@ -15,10 +16,10 @@ function backstageInit() {
           id: '',
           text: ''
         },
-        newNotice:{
-          title:'',
-          text:'',
-          time:''
+        newNotice: {
+          title: '',
+          text: '',
+          time: ''
         }
       }
     },
@@ -26,7 +27,7 @@ function backstageInit() {
       setNoticeList: function (list) {
         this.noticeList = list;
       },
-      add:function(){
+      add: function () {
         if (this.newNotice.title && this.newNotice.time && this.newNotice.text) {
           let data = `title=${this.newNotice.title}&time=${this.newNotice.time}&text=${this.newNotice.text}`;
           backstageAPI.addNotice(data).then(() => {
@@ -35,9 +36,9 @@ function backstageInit() {
             });
             backstageAPI.getNotice(this.setNoticeList);
             this.newNotice = {
-              title:'',
-              text:'',
-              time:''
+              title: '',
+              text: '',
+              time: ''
             }
           })
         } else {
@@ -68,7 +69,7 @@ function backstageInit() {
               oneKey: true,
               okFunc: () => { backstagePopup.hiddenPopup() }
             });
-          self.noticeList.splice(index,1);
+            self.noticeList.splice(index, 1);
           }).catch(() => {
             backstagePopup.showPopup({
               text: "删除失败！",
@@ -78,12 +79,40 @@ function backstageInit() {
           });
         }
       },
-      submit: function () { console.log("点击提交") },
+      submit: function () {
+        let data = `id=${this.now.id}&text=${this.now.text}`;
+        backstageAPI.updateNotice(data).then((res) => {
+          backstagePopup.showPopup({
+            text: "提交成功！"
+          });
+          this.hidden = false;
+          backstageAPI.getNotice(notice.setNoticeList);
+        }).catch((res) => {
+          console.log(res);
+          backstagePopup.showPopup({
+            text: "提交失败！",
+            oneKey: true,
+            okFunc: () => { backstagePopup.hiddenPopup() }
+          });
+        })
+      },
       cancle: function () { this.hidden = false }
     }
   })
-  backstageAPI.getNotice(notice.setNoticeList)
-    .then(backstageAPI.getRole);
+
+  let role = new Vue({
+    el: '#role',
+    data () {
+      return {
+
+      }
+    },
+    methods: {
+      
+    }
+  })
+  // 获取公告
+  backstageAPI.getNotice(notice.setNoticeList);
 }
 
 // 插入 li的模板

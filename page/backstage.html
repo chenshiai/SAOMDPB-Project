@@ -79,7 +79,7 @@
             <input type="text" name="text" v-model="newNotice.text" placeholder="这里写内容" style="width:50%" />
           </div>
           <div class="notice-change" v-if="hidden">
-            <textarea type="text" id="notice-textarea">{{now.text}}</textarea>
+            <textarea type="text" id="notice-textarea" v-model="now.text"></textarea>
             <span class="notice-submit notice-button" v-on:click="submit" v-bind:id="now.id">提交</span>
             <span class="notice-cancle notice-button" v-on:click="cancle">取消</span>
           </div>
@@ -95,7 +95,8 @@
                 时间：<span>{{item.time}}</span>
               </div>
               <span class="notice-update notice-button" v-on:click="update" v-bind:id="item.id">编辑</span>
-              <span class="notice-delete notice-button" v-on:click="remove" v-bind:id="item.id" v-bind:index="index">删除</span>
+              <span class="notice-delete notice-button" v-on:click="remove" v-bind:id="item.id"
+                v-bind:index="index">删除</span>
             </li>
           </ul>
         </div>
@@ -105,7 +106,7 @@
         <span>角色相关</span>
       </div>
       <section class="section-card">
-        <div class="role-show show">
+        <div class="role-show show" id="role">
           <span class="card-title">角色</span>
           <span class="notice-button" onclick="role.add()">新增角色</span>
           <div class="role-add">
@@ -147,6 +148,26 @@
 
           </div>
           <ul class="role-list">
+            <li class="role-list-item list-item" id="role${item.id}">
+              <div class="role-id">
+                ID：${item.id}
+              </div>
+              <div class="role-title">
+                Title：${item.title}
+              </div>
+              <div class="role-name">
+                Name：${item.name}
+              </div>
+              <div class="role-rare">
+                星级：${item.rare}
+              </div>
+              <div class="role-wea">
+                武器：${item.weapon}
+              </div>
+              <div class="role-ele">
+                属性：${item.element}
+              </div>
+            </li>
           </ul>
         </div>
 
