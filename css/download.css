@@ -1,0 +1,115 @@
+.allRole {
+  /* border: solid; */
+  width: 800px;
+  font-size: 0;
+  float: left;
+  margin-bottom: 100px;
+}
+.downloadNews{
+  float: right;
+  width: 240px;
+  padding: 10px;
+  height: 400px;
+}
+
+/*  角色列表样式 */
+.allRole .role-list-item {
+  display: inline-block;
+  width: 390px;
+  font-size: 1.3333rem;
+  box-sizing: border-box;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  color: #7a7a7a;
+}
+.role-list-item:hover{
+  /* box-shadow: 0 5px 10px #dddddd; */
+}
+.role-list-item .role-cutin, .role-list-item .meta {
+  float: left;
+  overflow: hidden;
+}
+
+.meta {
+  margin-left: 20px;
+}
+
+.meta h3 {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.meta h3:hover {
+  color: #ffc343;
+}
+
+.role-cutin img {
+  width: 100%;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.role-list-item .role-cutin {
+  width: 140px;
+  height: 140px;
+  border-radius: 5px;
+  background: -webkit-linear-gradient(rgb(248, 248, 248), rgb(255, 255, 255));
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(rgb(248, 248, 248), rgb(255, 255, 255));
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(rgb(248, 248, 248), rgb(255, 255, 255));
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(rgb(248, 248, 248), rgb(255, 255, 255));
+  /* 标准的语 */
+  box-shadow: 0 10px 15px #dddddd;
+  transition: all 0.4s;
+  transform: translateY(-10px)
+}
+
+.role-list-item .role-cutin:hover {
+  box-shadow: 0 4px 5px #a1a1a1;
+  transform: translateY(0px);
+}
+
+.summary {
+  margin-top: 10px;
+}
+
+/* 爱心形状*/
+
+#heart {
+  position: relative;
+  width: 20px;
+  height: 18px;
+  display: inline-block;
+}
+
+#heart:before, #heart:after {
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 0;
+  width: 10px;
+  height: 16px;
+  background: red;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+#heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+/* 火焰图标字体 */
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: red;
+}

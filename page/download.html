@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="keywords" content="刀剑神域, 记忆重组, SAOMDWIKI, SAOMD人物图鉴, SAOMD, 记忆碎片人物图鉴, 记忆重组人物图鉴">
+  <meta name="description" itemprop="description" content="SAOMD人物图鉴网站|提供SAOMD人物数据查看|立绘下载">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SAOMDPB">
+  <meta property="og:description" content="SAOMD人物图鉴网站|提供SAOMD人物数据查看|立绘下载">
+  <meta property="og:image" content="http://saomdpb.com/images/favicon.ico">
+  <meta property="og:title" content="SAOMD-立绘下载">
+  <meta property="og:url" content="http://saomdpb.com/">
+
+  <title>SAOMD-立绘下载</title>
+  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+  <link rel="stylesheet" href="../css/index.css?t=290419">
+  <link rel="stylesheet" href="../css/index_760.css?t=290419">
+  <link rel="stylesheet" href="../css/download.css">
+  <link rel="stylesheet" href="../components/MPBC.css?t=290419">
+  <script src="../JSON/BasicConfig.js?t=090519"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body ontouchstart>
+  <!-- MASK SVG 四圆点加载 -->
+  <div class="masks" id="masks">
+    <div class="mask-svg">
+      <div class="mask-text">
+        Now Loading···
+      </div>
+      <svg class="lds-message" width="80px" height="80px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid">
+        <g transform="translate(20 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.99275 0.99275)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(40 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.773605 0.773605)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.25s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(60 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.42525 0.42525)">
+            <animateTransform attributeName="transform" type="scale" begin="-0.125s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+        <g transform="translate(80 50)">
+          <circle cx="0" cy="0" r="8" fill="#fff" transform="scale(0.113418 0.113418)">
+            <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline"
+              keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite">
+            </animateTransform>
+          </circle>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <!-- 主要内容 -->
+  <div class="mainPage">
+    <!-- 头部 -->
+    <header>
+      <a href="#">
+        <img src="./images/logo.png" class="logo">
+        SAOMD-PB
+      </a>
+      <div class="player_icon">
+      </div>
+    </header>
+    <!-- 顶部留白 -->
+    <div class="placeholder-top"></div>
+    <div class="placeholder-top"></div>
+    <!-- 主体内容 -->
+    <div class="centerBox">
+      <!-- 立绘下载区 -->
+      <section class="section-seperate">
+        <!-- 角色列表 -->
+        <div class="allRole" id="role-list">
+          <!-- 所有角色card -->
+          <ul class="role-list">
+            <li class="role-list-item" v-for="(item, index) in roleList">
+              <div class="role-cutin" title="点击查看原图">
+                <img v-bind:src="getImg(item.cutin)" alt="图片未加载完成" onerror="this.src='../images/newRoles/019.png'">
+              </div>
+              <div class="meta">
+                <h3>{{item.title}}</h3>
+                <h5>{{item.name}}</h5>
+                <div class="summary" title="热度">
+                  <i class="iconfont">&#xe75a;</i>
+                  <span>3</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="nav-page">
+            
+          </div>
+        </div>
+        <!-- 页面须知 -->
+        <div class="section-card downloadNews">
+          <div class="card-title">as</div>
+        </div>
+      </section>
+
+    </div>
+    <!-- 返回顶部按钮 -->
+    <div class="goTop">
+      <svg width="50" height="50" class="goTopSvg" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 35 L25 18 L45 35 "></path>
+      </svg>
+    </div>
+    <!-- 底部 -->
+    <footer>
+      <div class="centerBox">
+        <span>
+          Copyright © 丨ConGreat
+        </span>
+      </div>
+    </footer>
+  </div>
+  <!-- 左侧公告 -->
+  <div class="select-open boxShadow-no" id="NoticeOpen">
+    <div class="select-open-lines">
+      <span class="line-item" style="top:11px"></span>
+      <span class="line-item" style="top:19px"></span>
+      <span class="line-item" style="top:27px"></span>
+    </div>
+  </div>
+  <section class="section-left Phone-Notice">
+    <div class="Notice">
+      <span class="Notice-title">
+        公告
+      </span>
+      <div class="Notice-text">
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+        <div class="Notice-text__greet">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 弹窗 -->
+  <div class="saopopup-container">
+    <div class="saopopup-frame">
+      <div class="saopopup-title"></div>
+      <div class="saopopup-text"></div>
+      <div class="saopopup-bottom">
+        <div class="saopopup-button-no">
+          <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+            <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+            <g>
+              <title>background</title>
+              <rect fill="rgba(0,0,0,0)" id="canvas_background" height="42" width="42" y="-1" x="-1" />
+              <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+              </g>
+            </g>
+            <g>
+              <title>Layer 1</title>
+              <ellipse stroke="#e34f61" ry="19.19463" rx="19.19463" id="svg_1" cy="20.058724" cx="20.067113"
+                stroke-width="1.5" fill="#fff" />
+              <ellipse stroke="#e34f61" ry="1.81208" rx="1.81208" id="svg_2" cy="19.999999" cx="19.999999"
+                stroke-opacity="null" stroke-width="29" fill="#fff" />
+              <rect stroke="#000" transform="rotate(45 20.000000000000007,19.999999999999996) " id="svg_9"
+                height="4.966443" width="18.422309" y="17.516778" x="10.788844" fill-opacity="null"
+                stroke-opacity="null" stroke-width="0" fill="#fff" />
+              <rect stroke="#000" transform="rotate(-45 19.999999999999996,19.999999999999996) " id="svg_10"
+                height="4.966443" width="17.947741" y="17.516779" x="11.026131" fill-opacity="null"
+                stroke-opacity="null" stroke-width="0" fill="#fff" />
+            </g>
+          </svg>
+        </div>
+        <div class="saopopup-button-ok">
+          <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+            <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+            <g>
+              <title>background</title>
+              <rect fill="rgba(0,0,0,0)" id="canvas_background" height="42" width="42" y="-1" x="-1" />
+              <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+              </g>
+            </g>
+            <g>
+              <title>Layer 1</title>
+              <ellipse stroke="#4d97f2" ry="19.19463" rx="19.19463" id="svg_1" cy="20.058724" cx="20.067113"
+                stroke-width="1.5" fill="#fff" />
+              <ellipse ry="13.020134" rx="13.020134" id="svg_2" cy="20.058725" cx="20.201342" fill-opacity="0"
+                stroke-opacity="null" stroke-width="7.5" stroke="#4d97f2" fill="#fff" />
+              <ellipse ry="2.416107" rx="2.416107" id="svg_3" cy="20.192953" cx="20.067114" fill-opacity="0"
+                stroke-opacity="null" stroke-width="7.5" stroke="#4d97f2" fill="#fff" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+  <script src="../components/MPBC.js?t=290419"></script>
+  <script src="../js/MPB.js?t=090519"></script>
+  <script src="../js/download.js"></script>
+  <script>
+    $(document).ready(function () {
+      console.log('页面加载完毕，开始初始化数据');
+      downloadPageInit();
+
+    });
+  </script>
+</body>
+
+</html>
