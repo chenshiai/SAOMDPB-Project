@@ -227,7 +227,9 @@ const MPB = {
     timeout = 60000,
     beforeSend = function () { },
     success = MPB.error('给我一个成功回调函数嘛！'),
-    error = MPB.error("服务器返回错误！"),
+    error = function(){
+      MPB.error("服务器返回错误！")
+    },
     complete = function () { }
   }) {
     var xhr = MPB.HTTP();
