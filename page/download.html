@@ -79,37 +79,58 @@
     </header>
     <!-- 顶部留白 -->
     <div class="placeholder-top"></div>
-    <div class="placeholder-top"></div>
+    <div class="section-title">
+      <span>立绘下载</span>
+    </div>
     <!-- 主体内容 -->
     <div class="centerBox">
+      <!-- 页面须知 -->
+      <div class="section-card downloadNews">
+        <div class="downloadNews-title">下载区须知</div>
+        <ul class="downloadNews-detail">
+          <li>本网站大部分图片均来自游戏内以及网络。</li>
+          <li>立绘并不为个人所有，这里只是分享出来。</li>
+          <li>下载后请自行收藏。</li>
+          <li>欢迎大家用来二次创作(^_^)。</li>
+        </ul>
+      </div>
+      <!-- 广告位？？？ -->
+      <div class="section-card downloadNews">
+        <div class="downloadNews-title">广告位？？？</div>
+        <ul class="downloadNews-detail">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
       <!-- 立绘下载区 -->
       <section class="section-seperate">
         <!-- 角色列表 -->
         <div class="allRole" id="role-list">
           <!-- 所有角色card -->
           <ul class="role-list">
-            <li class="role-list-item" v-for="(item, index) in roleList">
-              <div class="role-cutin" title="点击查看原图">
-                <img v-bind:src="getImg(item.cutin)" alt="图片未加载完成" onerror="this.src='../images/newRoles/019.png'">
-              </div>
-              <div class="meta">
-                <h3>{{item.title}}</h3>
-                <h5>{{item.name}}</h5>
-                <div class="summary" title="热度">
-                  <i class="iconfont">&#xe75a;</i>
-                  <span>3</span>
+            <transition-group name="fade" tag="li">
+              <li class="role-list-item" v-for="(item, index) in roleList" :key="index" @click="toBigImg(index)">
+                <div class="role-cutin" title="点击查看原图">
+                  <img :src="getImg(item.cutin)" alt="图片未加载完成" @load="loadSuccess(index)" @error="loadError(index)">
                 </div>
-              </div>
-            </li>
+                <div class="meta">
+                  <h3>{{item.title}}</h3>
+                  <h5>{{item.name}}</h5>
+                  <div class="summary" title="热度">
+                    <i class="iconfont">&#xe75a;</i>
+                    <span>3</span>
+                  </div>
+                </div>
+              </li>
+            </transition-group>
           </ul>
           <div class="nav-page">
-            
+
           </div>
         </div>
-        <!-- 页面须知 -->
-        <div class="section-card downloadNews">
-          <div class="card-title">as</div>
-        </div>
+
       </section>
 
     </div>

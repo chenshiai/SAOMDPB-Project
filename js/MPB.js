@@ -2,7 +2,7 @@
  * SAOMDPB项目用对象字面量API  
  * 作者：丨ConGreat  
  * 起始时间：2019-04-23  
- * 最后修改时间：2019-05-25
+ * 最后修改时间：2019-06-03
  */
 const MPB = {
   /**
@@ -11,7 +11,6 @@ const MPB = {
    * 之后再次调用就直接用实例啦！
    */
   "Object": {
-    xhr: null,
     ajax: null,
     scrollTop: 0
   },
@@ -19,19 +18,16 @@ const MPB = {
     throw new Error(msg);
   },
   /**
-   * 只需一次调用就可获得兼容的XMLHttpRequest对象~
+   * 获得兼容的XMLHttpRequest对象~
    */
   "HTTP": function (bool) {
-    if (MPB.Object.xhr === null) {
-      var xhr = null;
-      if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-      } else {
-        xhr = new ActiveXObject("Microsoft.XMLHTTP");
-      }
-      MPB.Object.xhr = xhr;
+    var xhr = null;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else {
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    return MPB.Object.xhr;
+    return xhr;
   },
   /**
    * 创建一个计时器队列对象。可以用来做防抖,但不是为了防抖而做的。
@@ -227,7 +223,7 @@ const MPB = {
     timeout = 60000,
     beforeSend = function () { },
     success = MPB.error('给我一个成功回调函数嘛！'),
-    error = function(){
+    error = function () {
       MPB.error("服务器返回错误！")
     },
     complete = function () { }

@@ -1,37 +1,46 @@
 .allRole {
   /* border: solid; */
-  width: 800px;
+  width: 100%;
   font-size: 0;
   float: left;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
 }
-.downloadNews{
-  float: right;
-  width: 240px;
+
+.downloadNews {
+  /* float: right; */
+  width: 280px;
   padding: 10px;
-  height: 400px;
+  margin-bottom: 20px;
 }
 
 /*  角色列表样式 */
+
 .allRole .role-list-item {
   display: inline-block;
-  width: 390px;
+  width: 330px;
   font-size: 1.3333rem;
   box-sizing: border-box;
   margin-left: 10px;
   margin-bottom: 30px;
   color: #7a7a7a;
 }
-.role-list-item:hover{
+
+.role-list-item:hover {
   /* box-shadow: 0 5px 10px #dddddd; */
 }
+
 .role-list-item .role-cutin, .role-list-item .meta {
   float: left;
   overflow: hidden;
+  /*超出部分隐藏*/
+  white-space: nowrap;
+  /*不换行*/
+  text-overflow: ellipsis;
 }
 
 .meta {
-  margin-left: 20px;
+  margin-left: 10px;
+  width: 180px;
 }
 
 .meta h3 {
@@ -75,32 +84,15 @@
   margin-top: 10px;
 }
 
-/* 爱心形状*/
-
-#heart {
-  position: relative;
-  width: 20px;
-  height: 18px;
-  display: inline-block;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
 
-#heart:before, #heart:after {
-  position: absolute;
-  content: "";
-  left: 10px;
-  top: 0;
-  width: 10px;
-  height: 16px;
-  background: red;
-  border-radius: 10px 10px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
+.fade-enter, .fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
 
-#heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
+  {
+  opacity: 0;
 }
 
 /* 火焰图标字体 */
@@ -112,4 +104,25 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: red;
+}
+
+/* 下载须知样式 */
+
+.downloadNews-title {
+  background-color: #838383;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.downloadNews li {
+  font-size: 0.9em;
+  padding: 5px 3px;
+  border-radius: 5px;
+}
+
+.downloadNews li:nth-child(2n-1) {
+  background-color: #ddd;
 }
