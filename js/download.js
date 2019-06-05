@@ -10,18 +10,20 @@ function downloadPageInit() {
     el: '#role-list',
     data() {
       return {
-        OSSURL: 'https://saoimages.oss-cn-shenzhen.aliyuncs.com/allrole/character',
-        roleList: [{
-          cutin:'',
-          title:'',
-          name:''
+        OSSURL: 'https://saoimages.oss-cn-shenzhen.aliyuncs.com/roles/allrole/allrole/character',
+        roleList: [{ // 默认值防止异步报错
+          cutin: '',
+          title: '',
+          name: '',
+          status: false // 记录该角色图片加载成功与否
         }], // 页面上显示的列表
         roleListPage: [], // 所有的分页数据
         page: null, // 所有的页数
         nowPage: 0, // 当前加载的页数
-        imgStatus: []
+        hidden: true // 角色列表显示
       }
     },
+    // 钩子函数
     updated() {
       Mask.loadoverMask('#ffc343');
     },
@@ -29,7 +31,7 @@ function downloadPageInit() {
       // 根据角色编号拼接图片地址 character_102001_1
       getImg: function (cutin) {
         if (!cutin) return 'null.png';
-        let url = this.OSSURL + cutin.slice(cutin.indexOf('_')) + '.png';
+        let url = this.OSSURL + cutin.slice(cutin.indexOf('_')) + '.png?x-oss-process=style/tosmoll';
         return url;
       },
       // 拼接本地的图片地址
@@ -39,35 +41,36 @@ function downloadPageInit() {
         let style = `../images/newRoles/019.png`;
         return style;
       },
-      // 数据分页
+      // 将请求到的所有角色数据分页
       paging: function (data) {
-        this.roleList = [];
-        this.roleListPage = MPB.paging(data.data, 10);
-        this.page = this.roleListPage.length;
-        this.setRoleList(0);
+        this.roleList = []; // 将默认值清除
+        this.roleListPage = MPB.paging(data.data, 12); // 保存分页数据
+        this.page = this.roleListPage.length; // 记录总页数
+        this.setRoleList(0); // 渲染第一页
+        // this.hidden = false;
       },
-      // 设置角色列表
+      // 将第n页的数据插入角色列表
       setRoleList: function (page) {
-        // let pageData = ;
-        this.roleList = this.roleList.concat(this.roleListPage[page]);
+        this.roleList = [...this.roleList, ...this.roleListPage[page]];
       },
-      // 加载更多
+      // 加载更多页
       loadmore: function () {
         this.nowPage += 1;
         this.setRoleList(this.nowPage);
       },
+      // 图片加载失败 记录状态false
       loadError: function (index) {
-        // 图片加载失败 记录状态false
-        this.imgStatus[index] = false;
+        this.roleList[index].status = false;
       },
+      // 图片加载成功 记录状态true
       loadSuccess: function (index) {
-        // 图片加载成功 记录状态true
-        this.imgStatus[index] = true;
+        this.roleList[index].status = true;
       },
+
+      // 点击li打开全部立绘
       toBigImg: function (index) {
-        if (this.imgStatus[index]) {
-          let cutin = this.roleList[index].cutin;
-          console.log(cutin);
+        if (this.roleList[index].status) {
+          console.log(this.roleList[index]);
         } else {
           popup.showPopup({
             title: 'Message',

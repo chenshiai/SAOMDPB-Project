@@ -2,15 +2,7 @@
   /* border: solid; */
   width: 100%;
   font-size: 0;
-  float: left;
-  margin-bottom: 200px;
-}
-
-.downloadNews {
-  /* float: right; */
-  width: 280px;
-  padding: 10px;
-  margin-bottom: 20px;
+  margin:20px 0 200px 0;
 }
 
 /*  角色列表样式 */
@@ -26,7 +18,7 @@
 }
 
 .role-list-item:hover {
-  /* box-shadow: 0 5px 10px #dddddd; */
+  box-shadow: 0 0 10px #dddddd;
 }
 
 .role-list-item .role-cutin, .role-list-item .meta {
@@ -75,7 +67,7 @@
   transform: translateY(-10px)
 }
 
-.role-list-item .role-cutin:hover {
+.role-list-item:hover .role-cutin {
   box-shadow: 0 4px 5px #a1a1a1;
   transform: translateY(0px);
 }
@@ -107,7 +99,12 @@
 }
 
 /* 下载须知样式 */
-
+.downloadNews {
+  /* float: right; */
+  width: 700px;
+  padding: 10px;
+  margin: 0 auto 20px auto;
+}
 .downloadNews-title {
   background-color: #838383;
   color: #fff;
@@ -115,14 +112,25 @@
   text-align: center;
   border-radius: 5px;
   margin-bottom: 10px;
+  font-size: 1.3em;
 }
 
 .downloadNews li {
-  font-size: 0.9em;
+  font-size: 1.1em;
   padding: 5px 3px;
   border-radius: 5px;
+  color: #5f5f5f;
 }
 
 .downloadNews li:nth-child(2n-1) {
   background-color: #ddd;
+}
+/* 大图展示样式*/
+.roleImg{
+  position: fixed;
+  max-width: 980px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
