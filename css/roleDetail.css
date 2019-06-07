@@ -22,7 +22,6 @@
 
 .section-card {
   position: relative;
-  border-radius: 2px;
   border: solid 10px rgba(0, 0, 0, 0);
   box-sizing: border-box;
   margin-bottom: 20px;

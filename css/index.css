@@ -100,11 +100,17 @@ header, footer, .section-left, .loadmore, .select-open, .section-card {
   width: 100%;
   overflow: hidden;
   background-color: #fff;
+  -webkit-box-shadow: 0px 0px 4px 1px #ddd;
+  -moz-box-shadow: 0px 0px 4px 1px #ddd;
+  box-shadow: 0px 0px 4px 1px #ddd;
+  border-radius: 3px;
+}
+header, footer{
+  border-radius: none;
   -webkit-box-shadow: 0px 0px 8px 1px #ddd;
   -moz-box-shadow: 0px 0px 8px 1px #ddd;
   box-shadow: 0px 0px 8px 1px #ddd;
 }
-
 .boxShadow-no {
   box-shadow: none;
 }
