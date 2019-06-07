@@ -87,8 +87,8 @@
         <ul class="downloadNews-detail">
           <li>本网站大部分图片均来自游戏内以及网络，所以不会添加水印，除非它原本就有水印在上面。</li>
           <li>本站为个人搭建，网站服务器、以及图片存储等租金自费，可能会穷到关服？</li>
-          <li>下载后请大家自行收藏，顺便分享一下给其他好友呗。欢迎大家用来二次创作(^_^)。</li>
-          <li>BiliBili个人主页:<a href="https://space.bilibili.com/76824065">丨ConGreat</a> 咸鱼UP主，万一哪天就诈尸了呢？</li>
+          <li>大家自行收藏后，顺便分享一下给其他好友呗。欢迎用来二次创作(^_^)。</li>
+          <li>这下好了，开放下载区后就不会有人来<a href="https://jq.qq.com/?_wv=1027&k=5jMJSSF">站长群</a> 里聊天惹······</li>
         </ul>
       </div>
       <!-- 立绘列表区 -->
@@ -100,15 +100,15 @@
           <ul class="role-list" v-if="hidden">
             <transition-group name="fade" tag="li">
               <li class="role-list-item" v-for="(item, index) in roleList" :key="index" @click="toBigImg(index)">
-                <div class="role-cutin" title="点击查看原图">
+                <div class="role-cutin" :title="item.title!='' && item.title!= null ? item.title : 'Unknow'">
                   <img :src="getImg(item.cutin)" alt="图片未加载完成" @load="loadSuccess(index)" @error="loadError(index)">
                 </div>
                 <div class="meta">
-                  <h3>{{item.title}}</h3>
+                  <h3>{{item.title!='' && item.title!= null ? item.title : 'Unknow'}}</h3>
                   <h5>{{item.name}}</h5>
                   <div class="summary" title="热度">
                     <i class="iconfont">&#xe75a;</i>
-                    <span>3</span>
+                    <span>{{item.download!=''&&item.download!=null?item.download:'0'}}</span>
                   </div>
                 </div>
               </li>
@@ -117,34 +117,45 @@
         </div>
       </section>
       <!-- 大图展示区 -->
-      <section class="section-card roleImg hidden" id="role-img">
+      <section class="section-card roleImg" id="role-img" v-if="isClose">
+          <div class="role-img-close" @click="close">
+            <span></span>
+          </div>
+
         <!-- 缩略图 -->
         <div class="role-select">
           <ul class="role-img-list">
-            <li class="img-list-item item-active">图1</li>
-            <li class="img-list-item">图2</li>
-            <li class="img-list-item">图3</li>
-            <li class="img-list-item">图4</li>
-            <li class="img-list-item">图5</li>
+            <li class="img-list-item item-active">
+              <span class="role-lv">Lv:80</span>
+              <img src="../images/newRoles/015.png" alt="">
+            </li>
+            <li class="img-list-item">
+              <span class="role-lv">Lv:85</span>
+              <img src="../images/newRoles/016.png" alt="">
+            </li>
+            <li class="img-list-item">
+              <span class="role-lv">Lv:90</span>
+              <img src="../images/newRoles/017.png" alt="">
+            </li>
+            <li class="img-list-item">
+              <span class="role-lv">Lv:95</span>
+              <img src="../images/newRoles/018.png" alt="">
+            </li>
+            <li class="img-list-item">
+              <span class="role-lv">Lv:100</span>
+              <img src="../images/newRoles/019.png" alt="">
+            </li>
           </ul>
-        </div>
-        <!-- 大图 -->
-        <div class="role-big-img">
-          大图在此
         </div>
         <!-- 背景选择 -->
-        <div class="background-select">
-          <ul class="bg-img-list">
-            <li class="bg-item item-active">无背景</li>
-            <li class="bg-item">背景1</li>
-            <li class="bg-item">背景2</li>
-            <li class="bg-item">背景3</li>
-          </ul>
+        <div class="background-select" @click="bgselect">
+          <span :class="bgYes ? 'bg-active': ''">有背景图</span>
+          <span :class="bgYes ? '': 'bg-active'">无背景图</span>
+          <i></i>
         </div>
         <!-- 下载按钮 -->
-        <button>下载</button>
+        <div class="role-img-download">下载图片</div>
         <!-- 关闭按钮 -->
-        <button>关闭</button>
       </section>
     </div>
     <!-- 返回顶部按钮 -->

@@ -2,7 +2,7 @@
   /* border: solid; */
   width: 100%;
   font-size: 0;
-  margin:20px 0 200px 0;
+  margin: 20px 0 200px 0;
 }
 
 /*  角色列表样式 */
@@ -99,12 +99,14 @@
 }
 
 /* 下载须知样式 */
+
 .downloadNews {
   /* float: right; */
   width: 700px;
   padding: 10px;
   margin: 0 auto 20px auto;
 }
+
 .downloadNews-title {
   background-color: #838383;
   color: #fff;
@@ -125,12 +127,115 @@
 .downloadNews li:nth-child(2n-1) {
   background-color: #ddd;
 }
+
 /* 大图展示样式*/
-.roleImg{
+
+.roleImg {
   position: fixed;
-  max-width: 980px;
-  height: 400px;
+  max-width: 700px;
+  /* height: 400px; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+
+.role-img-close{
+  float: right;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.role-img-close span{
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: red;
+  border-radius: 5px;
+  position: relative;
+  transform: rotate(45deg);
+  top: 6px;
+}
+.role-img-close span::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: red;
+  border-radius: 5px;
+  transform: rotate(90deg);
+}
+
+.role-select {
+  width: 100%;
+}
+
+.role-img-list {
+  display: flex;
+  width: inherit;
+}
+
+.role-img-list .img-list-item {
+  flex: 1;
+  max-width: 25%;
+  box-sizing: border-box;
+  border: solid 3px #fff;
+  opacity: 0.3;
+  transition: all 0.3s;
+  position: relative;
+
+}
+.img-list-item .role-lv{
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #7a7a7a;
+}
+.img-list-item.item-active {
+  border-color: #ffc343;
+  opacity: 1;
+}
+.img-list-item:hover{
+  opacity: 1;
+  border-color: #ffc343;
+}
+.img-list-item img{
+  width: 100%;
+}
+.background-select{
+  display: flex;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid;
+  color: #ffc343;
+  border-radius: 3px;
+}
+.background-select span,
+.role-img-download{
+  flex: 1;
+  line-height: 30px;
+  font-size: 15px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.bg-active,
+.role-img-download{
+  background-color: #ffc343;
+  color: #fff;
+  font-weight: bold;
+}
+.role-img-download{
+  margin-top: 10px;
+  width: 100%;
+  font-size: 17px;
+  background-color: #4d97f2;
+  cursor: pointer;
+  border-radius: 3px;
+
+}
+.role-img-download:hover{
+  background-color: #8ec1ff;
 }
