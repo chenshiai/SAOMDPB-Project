@@ -51,7 +51,7 @@ function downloadPageInit() {
       },
       bgselect: function () {
         popup.showPopup({
-          text: '下载带背景立绘该功能尚未完善</br>想要带背景的高清立绘可以在站长群获得'
+          text: '目前无法下载带背景立绘，该功能尚未完善</br>想要带背景的高清立绘可以在站长群获得'
         })
         // this.bgYes = !this.bgYes;
       },
@@ -64,12 +64,24 @@ function downloadPageInit() {
         if (this.bgYes) {
           // 下载带背景的图未实现
           popup.showPopup({
-            text: '下载带背景立绘该功能尚未完善</br>想要带背景的高清立绘可以在站长群获得'
+            text: '目前无法下载带背景立绘，该功能尚未完善</br>想要带背景的高清立绘可以在站长群获得'
           })
           this.isShow = false;
         } else {
           downloadIamge(this.thisRoleUrl(), this.roleinfo.cutin);
           this.isShow = false;
+          MPB.ajax({
+            method: 'post',
+            url: '/download/hot',
+            contentType: 'application/json',
+            data: { id: this.roleinfo.id, download: this.roleinfo.download },
+            success: ()=>{
+              console.log('下载记录成功。')
+            },
+            error: ()=>{
+              console.log('下载记录失败。')
+            }
+          })
         }
       },
       thisRoleUrl: function () {
