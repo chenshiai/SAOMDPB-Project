@@ -47,7 +47,6 @@ function downloadPageInit() {
       // 图片加载失败 移除该元素
       loadError: function (index) {
         this.roleImgList.splice(index, 1);
-        this.list.splice(index, 1);
       },
       bgselect: function () {
         popup.showPopup({
