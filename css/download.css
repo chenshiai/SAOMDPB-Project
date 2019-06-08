@@ -133,7 +133,6 @@
 .roleImg {
   position: fixed;
   max-width: 700px;
-  /* height: 400px; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -144,8 +143,12 @@
 .role-img-close{
   float: right;
   width: 20px;
-  height: 20px;
+  padding: 7.5px 0 7.5px 0;
   cursor: pointer;
+}
+.role-img-close:hover{
+  transition: all 0.5s;
+  transform: rotate(180deg);
 }
 .role-img-close span{
   display: block;
@@ -155,7 +158,6 @@
   border-radius: 5px;
   position: relative;
   transform: rotate(45deg);
-  top: 6px;
 }
 .role-img-close span::after{
   content: '';
@@ -184,7 +186,7 @@
   opacity: 0.3;
   transition: all 0.3s;
   position: relative;
-
+  margin: 0 auto;
 }
 .img-list-item .role-lv{
   position: absolute;
