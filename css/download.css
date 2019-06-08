@@ -102,8 +102,9 @@
 
 .downloadNews {
   /* float: right; */
-  width: 700px;
+  width: 100%;
   padding: 10px;
+  box-sizing: border-box;
   margin: 0 auto 20px auto;
 }
 
@@ -114,7 +115,8 @@
   text-align: center;
   border-radius: 5px;
   margin-bottom: 10px;
-  font-size: 1.3em;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 .downloadNews li {
@@ -240,4 +242,30 @@
 }
 .role-img-download:hover{
   background-color: #8ec1ff;
+}
+
+@media screen and (max-width: 770px) {
+  .centerBox{
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+  }
+  .downloadNews li{
+    font-size: 1.3em;
+  }
+  .allRole .role-list-item{
+    width: 100%;
+    display: flex;
+    margin-left: 0;
+  }
+  .role-list-item .role-cutin{
+    width: 90px;
+    height: 90px;
+  }
+  .meta{
+    flex: 1;
+  }
+  .roleImg{
+    /* margin: 0 10px 0 10px; */
+    box-sizing: border-box;
+  }
 }
