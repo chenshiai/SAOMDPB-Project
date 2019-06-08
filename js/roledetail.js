@@ -128,7 +128,7 @@
       var spItem = document.createElement('div');
       spItem.className = "sp-item";
       img.setAttribute('src', `../images/status/${item.img}.png`);
-      img.setAttribute('alt', item.sp);
+      img.setAttribute('title', item.sp);
       spItem.append(img);
       ss3sp.append(spItem);
     }
