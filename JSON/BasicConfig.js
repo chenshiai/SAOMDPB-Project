@@ -1,9 +1,9 @@
 ﻿const BasicConfig = {
   Notice: [
     {
-      title: "Q&A",
-      href:"",
-      p:"关于本站",
+      title: "立绘下载",
+      href:"/download",
+      p:"下载区Bate",
       time: ""
     },
     {
