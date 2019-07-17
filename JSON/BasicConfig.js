@@ -4,7 +4,7 @@
       title: "立绘下载",
       href:"/download",
       p:"下载区Bate",
-      time: ""
+      time: "2019-06-13"
     },
     {
       title: "游戏公告 / 下载&更新游戏",
